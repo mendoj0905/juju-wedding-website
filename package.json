@@ -1,10 +1,10 @@
 {
-  "name": "gatsby-startbootstrap-agency",
-  "description": "gatsby version of startbootstrap-agency with i18n support",
-  "version": "0.1.0",
-  "author": "thundermiracle",
+  "name": "juju-wedding-webbsite",
+  "description": "Wedding website built on gatsby version of startbootstrap-agency",
+  "version": "1.0.0",
+  "author": "mendoj0905",
   "bugs": {
-    "url": "https://github.com/thundermiracle/gatsby-startbootstrap-agency/issues"
+    "url": "https://github.com/mendoj0905/juju-wedding-website/issues"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -60,7 +60,7 @@
     "gatsby-plugin-eslint": "^3.0.0",
     "prettier": "^2.0.4"
   },
-  "homepage": "https://thundermiracle.github.io/gatsby-startbootstrap-agency",
+  "homepage": "https://github.com/mendoj0905/juju-wedding-website",
   "keywords": [
     "gatsby",
     "gatsbyjs",
@@ -75,7 +75,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thundermiracle/gatsby-startbootstrap-agency.git"
+    "url": "git+https://github.com/mendoj0905/juju-wedding-website.git"
   },
   "scripts": {
     "clean": "gatsby clean",
