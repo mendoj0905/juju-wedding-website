@@ -10,10 +10,9 @@ const Top = ({ frontmatter }) => {
     return null;
   }
 
-  const { header, subheader, imageFileName, jumpToAnchor, jumpToAnchorText } = frontmatter;
+  const { header, subheader, imageFileName, jumpToAnchor, jumpToAnchorText, imageEngagement } = frontmatter;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const scrollToSection = useSmoothScrollTo(jumpToAnchor);
-
   let extraInfoPart;
   if (jumpToAnchor && jumpToAnchorText) {
     extraInfoPart = (
@@ -28,6 +27,7 @@ const Top = ({ frontmatter }) => {
       imageFileName={imageFileName}
       header={header}
       subheader={subheader}
+      imageEngagement={imageEngagement}
       extraInfo={extraInfoPart}
     />
   );

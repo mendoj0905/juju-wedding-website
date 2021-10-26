@@ -1,4 +1,4 @@
 ---
-brand: "Start Bootstrap"
+brand: "Julie Kristin & Justin"
 menuText: "Menu "
 ---

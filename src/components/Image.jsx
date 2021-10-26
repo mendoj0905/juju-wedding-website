@@ -14,7 +14,7 @@ const Image = ({ fileName, alt, ...restProps }) => (
               relativePath
               name
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
+                gatsbyImageData(layout: CONSTRAINED)
               }
             }
           }
@@ -27,7 +27,6 @@ const Image = ({ fileName, alt, ...restProps }) => (
       if (!image) {
         return null;
       }
-
       const imageData = image.node.childImageSharp.gatsbyImageData;
       return <GatsbyImage alt={alt} image={imageData} {...restProps} />;
     }}

@@ -18,6 +18,12 @@
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+@mixin saturday-font {
+  font-family: 'Better Saturday', sans-serif;
+}
+@mixin gv-font {
+  font-family: 'Great Vibes', cursive;
+}
 
 /* Variables */
 // Restated Bootstrap Variables
@@ -33,4 +39,4 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-$primary: #fed136 !default;
+$primary: #663051 !default;

@@ -23,9 +23,9 @@ const PortfolioDetailDialog = ({
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      {/* <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">{header}</Modal.Title>
-      </Modal.Header>
+      </Modal.Header> */}
       <Modal.Body className="mx-auto">
         <p className="item-intro text-muted">{subheader}</p>
         <Image
@@ -33,17 +33,17 @@ const PortfolioDetailDialog = ({
           fileName={imageFileName}
           alt={imageAlt || header || subheader}
         />
-        <p>{content}</p>
-        {extraInfo}
+        {/* <p>{content}</p> */}
+        {/* {extraInfo} */}
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <div className="mx-auto">
           <Button variant="primary" onClick={onHide}>
             <Icon iconName="CloseIcon" />
             &nbsp; Close Project
           </Button>
         </div>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 };

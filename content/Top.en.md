@@ -1,7 +1,8 @@
 ---
-header: "It's Nice To Meet You"
-subheader: "Welcome To Our Studio!"
-imageFileName: "header-bg.jpg"
-jumpToAnchor: "Services"
-jumpToAnchorText: "Tell Me More"
+header: "Julie Kristin Palaganas & Justin Mendoza"
+subheader: "October 25, 2022"
+imageFileName: "kualoa.jpg"
+jumpToAnchor: ""
+jumpToAnchorText: ""
+imageEngagement: "photos/01-photo.jpg"
 ---

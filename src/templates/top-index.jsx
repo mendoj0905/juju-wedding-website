@@ -12,6 +12,7 @@ import LanguageSelector from "components/LanguageSelector";
 import "utils/fixFontAwesome";
 import breakDownAllNodes from "utils/breakDownAllNodes";
 import fileNameToSectionName from "utils/fileNameToSectionName";
+import showHideSection from "utils/showHideSection";
 
 import "../style/main.scss";
 
@@ -32,6 +33,7 @@ export const query = graphql`
     ) {
       nodes {
         frontmatter {
+          imageEngagement
           brand
           anchor
           clients {
@@ -59,6 +61,7 @@ export const query = graphql`
           services {
             content
             header
+            subheader
             iconName
             imageFileName
           }
@@ -135,7 +138,7 @@ const IndexPage = ({ data, pageContext: { langKey, defaultLang, langTextMap } })
           const sectionComponentName = fileNameToSectionName(fileName);
           const SectionComponent = Sections[sectionComponentName];
 
-          return SectionComponent ? (
+          return SectionComponent && showHideSection(sectionComponentName)? (
             <SectionComponent
               key={sectionComponentName}
               className={ind % 2 === 1 ? "bg-light" : null}

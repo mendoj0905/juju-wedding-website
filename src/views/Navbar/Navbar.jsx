@@ -9,10 +9,11 @@ import useWindowOnScroll from "hooks/useWindowOnScroll";
 import useSmoothScrollTo from "hooks/useSmoothScrollTo";
 import Icon from "components/Icon";
 import NavItem from "components/NavItem";
+// import showHideSection from "utils/showHideSection";
 
 import "./Navbar.scss";
 
-const MyNavbar = ({ anchors, frontmatter, extraItems }) => {
+const MyNavbar = ({ anchors, frontmatter }) => {
   const { brand, menuText } = frontmatter;
 
   const handleScrollToTop = useSmoothScrollTo(0);
@@ -57,7 +58,6 @@ const MyNavbar = ({ anchors, frontmatter, extraItems }) => {
               <NavItem key={anchor} to={anchor} onClick={closeMenu} />
             ))}
           </Nav>
-          {extraItems}
         </Navbar.Collapse>
       </Container>
     </Navbar>
@@ -67,13 +67,11 @@ const MyNavbar = ({ anchors, frontmatter, extraItems }) => {
 MyNavbar.propTypes = {
   anchors: PropTypes.arrayOf(PropTypes.string),
   frontmatter: PropTypes.object,
-  extraItems: PropTypes.any,
 };
 
 MyNavbar.defaultProps = {
   anchors: [],
   frontmatter: {},
-  extraItems: null,
 };
 
 export default MyNavbar;

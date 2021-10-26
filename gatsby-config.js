@@ -81,6 +81,14 @@ module.exports = {
             name: "Roboto Slab",
             file: "https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap",
           },
+          {
+            name: "Better Saturday",
+            file: "http://fonts.cdnfonts.com/css/better-saturday",
+          },
+          {
+            name: "Great Vibes",
+            file: "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap",
+          }
         ],
       },
     },
