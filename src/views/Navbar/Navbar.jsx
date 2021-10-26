@@ -9,7 +9,7 @@ import useWindowOnScroll from "hooks/useWindowOnScroll";
 import useSmoothScrollTo from "hooks/useSmoothScrollTo";
 import Icon from "components/Icon";
 import NavItem from "components/NavItem";
-// import showHideSection from "utils/showHideSection";
+import showHideSection from "utils/showHideSection";
 
 import "./Navbar.scss";
 
@@ -55,7 +55,9 @@ const MyNavbar = ({ anchors, frontmatter }) => {
         <Navbar.Collapse>
           <Nav className="text-uppercase ml-auto">
             {anchors.map((anchor) => (
-              <NavItem key={anchor} to={anchor} onClick={closeMenu} />
+              
+              showHideSection(anchor) && <NavItem key={anchor} to={anchor} onClick={closeMenu} />
+              
             ))}
           </Nav>
         </Navbar.Collapse>

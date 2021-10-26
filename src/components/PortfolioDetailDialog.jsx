@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Modal, Button } from "react-bootstrap";
+import { 
+  Modal, 
+  // Button 
+} from "react-bootstrap";
 import Image from "components/Image";
-import Icon from "./Icon";
+// import Icon from "./Icon";
 
 const PortfolioDetailDialog = ({
   onHide,

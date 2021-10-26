@@ -6,10 +6,18 @@ import { Container, Card } from "react-bootstrap";
 import Image from "components/Image";
 import "./ImageCard.scss";
 
-const ImageCard = ({ className, imageFileName, imageEngagement, imageAlt, header, subheader, extraInfo }) => {
+const ImageCard = ({ 
+  className, 
+  imageFileName, 
+  imageEngagement, 
+  imageAlt, 
+  header, 
+  subheader, 
+  extraInfo 
+}) => {
   return (
     <Card className={clsx("image-card bg-dark text-white text-center", className)}>
-      <Image className="image img-bg" fileName={imageFileName} alt={imageAlt || header || subheader} />
+      <Image className="image img-bg" fileName={imageFileName} alt={imageAlt || header || subheader || imageEngagement} />
       <Card.ImgOverlay className="no-padding">
         <Container>
           <div className="intro-text">

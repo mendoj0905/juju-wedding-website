@@ -2,7 +2,7 @@
   Juju Wedding Website
 </h1>
 
-Our wedding website created using GatsbyJS and built using [gatsby-startbootstrap-agency](https://github.com/thundermiracle/gatsby-startbootstrap-agency) starter template. 
+Our wedding website created using GatsbyJS and built using [gatsby-startbootstrap-agency](https://github.com/thundermiracle/gatsby-startbootstrap-agency) template. 
 
 ## How to use
 
