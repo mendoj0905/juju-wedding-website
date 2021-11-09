@@ -8,11 +8,16 @@ import Footer from "views/Footer";
 import * as Sections from "views/Sections";
 import SEO from "components/SEO";
 import LanguageSelector from "components/LanguageSelector";
+import Password from 'components/password'
 
 import "utils/fixFontAwesome";
 import breakDownAllNodes from "utils/breakDownAllNodes";
 import fileNameToSectionName from "utils/fileNameToSectionName";
 import showHideSection from "utils/showHideSection";
+import {
+  getSessionPassword,
+  getPassword,
+} from 'utils/passwordUtil'
 
 import "../style/main.scss";
 
@@ -23,6 +28,7 @@ export const query = graphql`
   query IndexQuery($langKey: String!) {
     site {
       siteMetadata {
+        title
         keywords
         description
       }
@@ -109,7 +115,7 @@ export const query = graphql`
 const IndexPage = ({ data, pageContext: { langKey, defaultLang, langTextMap } }) => {
   const {
     site: {
-      siteMetadata: { keywords, description },
+      siteMetadata: { title, keywords, description },
     },
     allMarkdownRemark: { nodes },
   } = data;
@@ -123,32 +129,37 @@ const IndexPage = ({ data, pageContext: { langKey, defaultLang, langTextMap } })
     );
   }
 
-  return (
-    <>
-      <SEO lang={langKey} title="Julie Kristin & Justin Wedding 2022" keywords={keywords} description={description} />
-      <Navbar
-        anchors={anchors}
-        frontmatter={navBarNode.frontmatter}
-        extraItems={langSelectorPart}
-      />
-      <Top frontmatter={topNode.frontmatter} />
-      {
-        // dynamically import sections
-        sectionsNodes.map(({ frontmatter, fields: { fileName } }, ind) => {
-          const sectionComponentName = fileNameToSectionName(fileName);
-          const SectionComponent = Sections[sectionComponentName];
+  const passwordCandidate = getSessionPassword() === getPassword();
 
-          return SectionComponent && showHideSection(sectionComponentName)? (
-            <SectionComponent
-              key={sectionComponentName}
-              className={ind % 2 === 1 ? "bg-light" : null}
-              frontmatter={frontmatter}
-            />
-          ) : null;
-        })
-      }
-      <Footer frontmatter={footerNode.frontmatter} />
-    </>
+  return (
+    <div>
+      { !passwordCandidate &&  <Password /> }    
+      { passwordCandidate && <div>
+        <SEO lang={langKey} title={title} keywords={keywords} description={description} />
+        <Navbar
+          anchors={anchors}
+          frontmatter={navBarNode.frontmatter}
+          extraItems={langSelectorPart}
+        />
+        <Top frontmatter={topNode.frontmatter} />
+        {
+          // dynamically import sections
+          sectionsNodes.map(({ frontmatter, fields: { fileName } }, ind) => {
+            const sectionComponentName = fileNameToSectionName(fileName);
+            const SectionComponent = Sections[sectionComponentName];
+
+            return SectionComponent && showHideSection(sectionComponentName)? (
+              <SectionComponent
+                key={sectionComponentName}
+                className={ind % 2 === 1 ? "bg-light" : "bg-white"}
+                frontmatter={frontmatter}
+              />
+            ) : null;
+          })
+        }
+        <Footer frontmatter={footerNode.frontmatter} />
+      </div>}
+    </div>
   );
 };
 
