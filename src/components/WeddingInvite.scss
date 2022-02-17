@@ -1,0 +1,10 @@
+.image-card {
+  height: 491px;
+  @include gv-font;
+  image {
+    height: 400px;
+  }
+  .no-padding {
+    padding: 0;
+  }
+}
