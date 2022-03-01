@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { setSessionPassword, getPassword } from '../utils/passwordUtil'
+import { setWeddingSession, getPassword } from '../utils/passwordUtil'
 
 import "../style/main.scss";
 import "./password.scss"
@@ -10,15 +10,14 @@ const Password = () => {
   const [password, setPassword] = useState('');
   const [isWrongPassword, setWrongPassword] = useState(false)
 
-  const checkPassword = () => {
-    setWrongPassword(password !== getPassword());
-  }
-
-  const onSubmit = event => {
+  const onSubmit = async event => {
     event.preventDefault();
-    if (password === getPassword()) {
-      setSessionPassword(password);
+    const isPasswordValid = await getPassword(password);
+    if (isPasswordValid) {
+      setWeddingSession();
       window.location.reload();
+    } else {
+      setWrongPassword(!isPasswordValid);
     }
   };
 
@@ -38,7 +37,7 @@ const Password = () => {
         <div className="password-submit">
           <Button 
             type='submit'
-            onClick={ checkPassword }>
+            >
               Enter
           </Button>
         </div>
