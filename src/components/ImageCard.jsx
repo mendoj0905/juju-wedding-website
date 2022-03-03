@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
-import { Container, Card, Button } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import Image from "components/Image";
 import "./ImageCard.scss";
-import RsvpDialog from "components/RsvpDialog";
+// import RsvpDialog from "components/RsvpDialog";
 
 const ImageCard = ({
   className,
@@ -46,10 +46,10 @@ const ImageCard = ({
           </div>
         </Container>
       </Card.ImgOverlay>
-      <RsvpDialog 
+      {/* <RsvpDialog 
         show={openRsvp}
         onHide={handleHideRsvp}
-      />
+      /> */}
     </Card>
   );
 };
