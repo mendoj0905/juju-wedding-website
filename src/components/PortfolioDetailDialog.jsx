@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { 
-  Modal, 
-  // Button 
+import {
+  Modal,
+  // Button
 } from "react-bootstrap";
 import Image from "components/Image";
 // import Icon from "./Icon";
