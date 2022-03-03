@@ -93,7 +93,7 @@ export const query = graphql`
           termsText
           title
           timeline {
-            content
+            # content
             header
             imageContent
             imageFileName
@@ -126,10 +126,13 @@ const IndexPage = ({ data, pageContext: { langKey, defaultLang, langTextMap } })
     );
   }
 
-
   return (
     <div>
-      {!getSessionPassword() && <Password />}
+      {!getSessionPassword() && (
+        <div>
+          <Password />
+        </div>
+      )}
       {getSessionPassword() && (
         <div>
           <SEO lang={langKey} title={title} keywords={keywords} description={description} />
