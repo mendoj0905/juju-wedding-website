@@ -2,15 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Button } from "react-bootstrap";
 import Image from "components/Image";
 import "./ImageCard.scss";
-// import RsvpDialog from "components/RsvpDialog";
+import RsvpDialog from "components/RsvpDialog";
 
 const ImageCard = ({
   className,
   imageFileName,
-  imageEngagement,
   imageAlt,
   header,
   subheader,
@@ -30,7 +29,7 @@ const ImageCard = ({
       <Image
         className="image img-bg"
         fileName={imageFileName}
-        alt={imageAlt || header || subheader || imageEngagement}
+        alt={imageAlt || header || subheader}
       />
       <Card.ImgOverlay className="no-padding">
         <Container>
@@ -39,17 +38,17 @@ const ImageCard = ({
             <div className="intro-lead-in">{subheader}</div>
             <div className="wedding-location">Paliku Gardens</div>
             <div className="wedding-address">Kualoa Ranch, Kaneohe, HI 96744</div>
-            {/* <Button 
+            <Button 
               className="rsvp-button" 
-              onClick={handleOpenRsvp}>RSVP</Button> */}
+              onClick={handleOpenRsvp}>RSVP</Button>
             {extraInfo}
           </div>
         </Container>
       </Card.ImgOverlay>
-      {/* <RsvpDialog 
+      <RsvpDialog 
         show={openRsvp}
         onHide={handleHideRsvp}
-      /> */}
+      />
     </Card>
   );
 };
@@ -57,7 +56,6 @@ const ImageCard = ({
 ImageCard.propTypes = {
   className: PropTypes.string,
   imageFileName: PropTypes.string,
-  imageEngagement: PropTypes.string,
   imageAlt: PropTypes.string,
   header: PropTypes.string,
   subheader: PropTypes.string,
@@ -67,7 +65,6 @@ ImageCard.propTypes = {
 ImageCard.defaultProps = {
   className: null,
   imageFileName: null,
-  imageEngagement: null,
   imageAlt: null,
   header: "",
   subheader: "",

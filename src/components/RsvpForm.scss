@@ -1,0 +1,23 @@
+.rsvp-form-box {
+  min-width: 100%;
+
+  h2 {
+    text-align: center;
+    @include gv-font;
+  }
+  input {
+    display: block;
+    width: 100%;
+    padding: .5rem .8rem .5rem .8rem;
+    margin: .9vw 0;
+    // border:0;
+    border-radius: 5px;
+    font-size: 20px;
+  }
+
+  Button {
+    // padding: .5rem .8rem .5rem .8rem;
+    margin: .9vw 0;
+  }
+
+}
