@@ -11,6 +11,13 @@ const Password = ({
   isWrongPassword,
 }) => {
 
+  const onKeyDown = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      onHide();
+    }
+  }
+
   return (
     <Modal show={show} fullscreen="true" size="xl" onHide={onHide} className="password-modal" centered>
       <Modal.Header className="password-modal-header">
@@ -24,12 +31,13 @@ const Password = ({
               type="password" 
               name="password" 
               autoComplete="current-password"
-              onChange={ () => setPassword(event.target.value) }
+              onChange={ e => setPassword(e.target.value) }
+              onKeyDown={onKeyDown}
               />
           </div>
 
           <div className="password-submit">
-            <Button onClick={onHide}>Enter</Button>
+            <Button onClick={onHide} >Enter</Button>
           </div>
         </form>
       </Modal.Body>
