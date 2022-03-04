@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
@@ -7,14 +7,13 @@ import Top from "views/Top";
 import Footer from "views/Footer";
 import * as Sections from "views/Sections";
 import SEO from "components/SEO";
-import LanguageSelector from "components/LanguageSelector";
 import Password from "components/password";
 
 import "utils/fixFontAwesome";
 import breakDownAllNodes from "utils/breakDownAllNodes";
 import fileNameToSectionName from "utils/fileNameToSectionName";
 import showHideSection from "utils/showHideSection";
-import { getSessionPassword } from "utils/passwordUtil";
+import { getPassword, setWeddingSession, getSessionPassword } from "utils/passwordUtil";
 
 import "../style/main.scss";
 
@@ -22,7 +21,7 @@ import "../style/main.scss";
  * get file name list from content/sections folder
  */
 export const query = graphql`
-  query IndexQuery($langKey: String!) {
+  query IndexQuery {
     site {
       siteMetadata {
         title
@@ -31,7 +30,6 @@ export const query = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fields: { langKey: { eq: $langKey } } }
       sort: { order: ASC, fields: [fields___directoryName, fields___fileName] }
     ) {
       nodes {
@@ -93,7 +91,6 @@ export const query = graphql`
           termsText
           title
           timeline {
-            # content
             header
             imageContent
             imageFileName
@@ -109,7 +106,7 @@ export const query = graphql`
   }
 `;
 
-const IndexPage = ({ data, pageContext: { langKey, defaultLang, langTextMap } }) => {
+const IndexPage = ({ data }) => {
   const {
     site: {
       siteMetadata: { title, keywords, description },
@@ -118,63 +115,52 @@ const IndexPage = ({ data, pageContext: { langKey, defaultLang, langTextMap } })
   } = data;
 
   const { topNode, navBarNode, anchors, footerNode, sectionsNodes } = breakDownAllNodes(nodes);
+  const [showPassword, setShowPassword] = useState(true);
+  const [password, setPassword] = useState('');
+  const [wrongPassword, setWrongPassword] = useState(false);
 
-  let langSelectorPart;
-  if (langTextMap != null && Object.keys(langTextMap).length > 1) {
-    langSelectorPart = (
-      <LanguageSelector langKey={langKey} defaultLang={defaultLang} langTextMap={langTextMap} />
-    );
-  }
+  const handleHidePassword = useCallback(async () => {
+    const isPasswordValid = await getPassword(password);
+    if (isPasswordValid) {
+      setWeddingSession();
+      setShowPassword(false)
+    } else {
+      setWrongPassword(true);
+    }
+  }, [ password ]);
+
 
   return (
-    <div>
-      {!getSessionPassword() && (
-        <div>
-          <Password />
-        </div>
-      )}
-      {getSessionPassword() && (
-        <div>
-          <SEO lang={langKey} title={title} keywords={keywords} description={description} />
-          <Navbar
-            anchors={anchors}
-            frontmatter={navBarNode.frontmatter}
-            extraItems={langSelectorPart}
-          />
-          <Top frontmatter={topNode.frontmatter} />
-          {
-            // dynamically import sections
-            sectionsNodes.map(({ frontmatter, fields: { fileName } }, ind) => {
-              const sectionComponentName = fileNameToSectionName(fileName);
-              const SectionComponent = Sections[sectionComponentName];
+    <>
+      <SEO title={title} keywords={keywords} description={description} />
+      <Navbar
+        anchors={anchors}
+        frontmatter={navBarNode.frontmatter}
+      />
+      <Top frontmatter={topNode.frontmatter} />
+      {
+        // dynamically import sections
+        sectionsNodes.map(({ frontmatter, fields: { fileName } }, ind) => {
+          const sectionComponentName = fileNameToSectionName(fileName);
+          const SectionComponent = Sections[sectionComponentName];
 
-              return SectionComponent && showHideSection(sectionComponentName) ? (
-                <SectionComponent
-                  key={sectionComponentName}
-                  className={ind % 2 === 1 ? "bg-light" : "bg-white"}
-                  frontmatter={frontmatter}
-                />
-              ) : null;
-            })
-          }
-          <Footer frontmatter={footerNode.frontmatter} />
-        </div>
-      )}
-    </div>
+          return SectionComponent && showHideSection(sectionComponentName) ? (
+            <SectionComponent
+              key={sectionComponentName}
+              className={ind % 2 === 1 ? "bg-light" : "bg-white"}
+              frontmatter={frontmatter}
+            />
+          ) : null;
+        })
+      }
+      <Footer frontmatter={footerNode.frontmatter} />
+      {!getSessionPassword() && <Password show={showPassword} onHide={handleHidePassword} isWrongPassword={wrongPassword} setPassword={setPassword}/>}
+    </>
   );
 };
 
 IndexPage.propTypes = {
   data: PropTypes.object.isRequired,
-  pageContext: PropTypes.object,
-};
-
-IndexPage.defaultProps = {
-  pageContext: {
-    langKey: "en",
-    defaultLang: "en",
-    langTextMap: {},
-  },
 };
 
 export default IndexPage;

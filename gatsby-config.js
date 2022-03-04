@@ -1,7 +1,10 @@
 const path = require("path");
-const { title, keywords, description, author, defaultLang, trackingId } = require("./config/site");
+const { title, keywords, description, author, trackingId } = require("./config/site");
 
 module.exports = {
+  flags: {
+    DEV_SSR: false
+  },
   siteMetadata: {
     title,
     keywords,
@@ -90,14 +93,6 @@ module.exports = {
             file: "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap",
           }
         ],
-      },
-    },
-    {
-      resolve: "gatsby-plugin-i18n",
-      options: {
-        langKeyDefault: defaultLang,
-        useLangKeyLayout: false,
-        pagesPaths: ["/content/"],
       },
     },
   ],
