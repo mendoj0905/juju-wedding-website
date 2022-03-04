@@ -1,50 +1,58 @@
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import { setWeddingSession, getPassword } from '../utils/passwordUtil'
+import React from "react";
+import { Button, Modal } from "react-bootstrap";
+import PropTypes from "prop-types";
 
-import "../style/main.scss";
 import "./password.scss"
 
-const Password = () => {
-
-  const [password, setPassword] = useState('');
-  const [isWrongPassword, setWrongPassword] = useState(false)
-
-  const onSubmit = async event => {
-    event.preventDefault();
-    const isPasswordValid = await getPassword(password);
-    if (isPasswordValid) {
-      setWeddingSession();
-      window.location.reload();
-    } else {
-      setWrongPassword(!isPasswordValid);
-    }
-  };
+const Password = ({
+  show,
+  onHide,
+  setPassword,
+  isWrongPassword,
+}) => {
 
   return (
-    <div className="password-container">
-      <form onSubmit={onSubmit} className="password-form">
-        <h2>Please Enter Our Password</h2>
-        <div className="password-input">
-          <input 
-            type="password" 
-            name="password" 
-            autoComplete="current-password"
-            value={password}
-            onChange={event => { setPassword(event.target.value) }}/>
-        </div>
+    <Modal show={show} fullscreen="true" size="xl" onHide={onHide} className="password-modal" centered>
+      <Modal.Header className="password-modal-header">
+        <h1>Please Enter Our Password</h1>
+      </Modal.Header>
+      <Modal.Body className="password-modal-body">
+        <form className="password-form">
+          
+          <div className="password-input">
+            <input 
+              type="password" 
+              name="password" 
+              autoComplete="current-password"
+              onChange={ () => setPassword(event.target.value) }
+              />
+          </div>
 
-        <div className="password-submit">
-          <Button 
-            type='submit'
-            >
-              Enter
-          </Button>
-        </div>
-        {isWrongPassword && <h3>Opps wrong password!</h3>}
-      </form>
-    </div>
+          <div className="password-submit">
+            <Button onClick={onHide}>Enter</Button>
+          </div>
+        </form>
+      </Modal.Body>
+      <Modal.Footer className="password-modal-footer">
+        {isWrongPassword && <h2>Please Enter Password!</h2>}
+      </Modal.Footer>
+      
+    </Modal>
   );
 };
+
+Password.propTypes = {
+  show: PropTypes.bool,
+  onHide: PropTypes.any,
+  isWrongPassword: PropTypes.bool,
+  setPassword: PropTypes.func
+}
+
+Password.defaultProps = {
+  show: null,
+  onHide: null,
+  isWrongPassword: null,
+  setPassword: null
+}
 
 export default Password;

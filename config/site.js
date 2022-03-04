@@ -6,7 +6,6 @@ module.exports = {
     "gatsbyjs",
     "landing page",
     "landing",
-    "i18n",
     "eslint",
     "bootstrap",
     "startbootstrap-agency",
@@ -14,8 +13,4 @@ module.exports = {
   description: "Our wedding website.",
   author: "mendoj0905",
   trackingId: "UA-119418003-5",
-  defaultLang: "en",
-  langTextMap: {
-    en: "English",
-  },
 };
