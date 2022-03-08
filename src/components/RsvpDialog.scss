@@ -1,0 +1,14 @@
+.rsvp-modal {
+  // background-color: white;
+  h1 {
+    @include gv-font
+  }
+}
+
+@media (min-width: 767px) {
+  .rsvp-modal {
+    h1 {
+      @include gv-font
+    }
+  }
+}

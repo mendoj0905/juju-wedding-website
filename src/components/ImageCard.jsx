@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
@@ -16,16 +16,37 @@ const ImageCard = ({
   extraInfo,
 }) => {
 
-  const [openRsvp, setOpenRsvp] = React.useState(false);
-  const handleOpenRsvp = React.useCallback(() => {
+  const [openRsvp, setOpenRsvp] = useState(false);
+  const [guest, setGuest] = useState({});
+  const [guestName, setGuestName] = useState('');
+  const [guestMembers, setGuestMembers] = useState([]);
+  const [noUserFound, foundUser] = useState(false);
+  
+  const handleOpenRsvp = useCallback(() => {
     setOpenRsvp(true);
   }, []);
-  const handleHideRsvp = React.useCallback(() => {
+
+  const handleHideRsvp = useCallback(() => {
     setOpenRsvp(false);
+    setGuest({});
+    setGuestName('');
+    foundUser(false);
   }, []);
 
   return (
     <Card className={clsx("image-card bg-dark text-white text-center", className)}>
+      <RsvpDialog 
+        show={openRsvp}
+        onHide={handleHideRsvp}
+        guest={guest}
+        setGuest={setGuest}
+        guestName={guestName}
+        setGuestName={setGuestName}
+        noUserFound={noUserFound}
+        foundUser={foundUser}
+        guestMembers={guestMembers}
+        setGuestMembers={setGuestMembers}
+      />
       <Image
         className="image img-bg"
         fileName={imageFileName}
@@ -45,10 +66,6 @@ const ImageCard = ({
           </div>
         </Container>
       </Card.ImgOverlay>
-      <RsvpDialog 
-        show={openRsvp}
-        onHide={handleHideRsvp}
-      />
     </Card>
   );
 };
