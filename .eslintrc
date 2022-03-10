@@ -1,7 +1,13 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["airbnb", "plugin:react/recommended", "prettier"],
-  "plugins": ["react-hooks"],
+  "parser": "@babel/eslint-parser",
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "react-hooks"
+  ],
   "env": {
     "browser": true,
     "es6": true,
@@ -15,7 +21,10 @@
     "func-names": 0,
     "global-require": 0,
     "import/no-dynamic-require": 0,
-    "import/no-extraneous-dependencies": [2, {}],
+    "import/no-extraneous-dependencies": [
+      2,
+      {}
+    ],
     "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/href-no-hash": 0,
@@ -23,6 +32,7 @@
     "no-console": 1,
     "no-irregular-whitespace": 0,
     "no-param-reassign": 0,
+    "no-restricted-exports": 0,
     "no-restricted-globals": 0,
     "no-underscore-dangle": 0,
     "no-unused-vars": 1,
@@ -42,12 +52,15 @@
     "react/react-in-jsx-scope": 0,
     "react/jsx-props-no-spreading": 0,
     "react-hooks/rules-of-hooks": 2,
-    "react-hooks/exhaustive-deps": 2
+    "react-hooks/exhaustive-deps": 2,
+    "react/function-component-definition": 0
   },
   "settings": {
     "import/resolver": {
       "babel-module": {
-        "root": ["./"]
+        "root": [
+          "./"
+        ]
       }
     }
   }
