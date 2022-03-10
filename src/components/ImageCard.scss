@@ -38,17 +38,19 @@
 @media (min-width: 768px) {
   .image-card {
     height: auto;
-    // width: 3500px;
     margin: auto;
     .image {
       height: auto;
     }
     .img-bg {
       opacity: 0.6;
-      background-color: #ffffff;
+      background-color: $white;
     }
     .intro-text {
-      padding-top: 300px;
+      padding-top: 400px;
+      @media (min-width: 1980px) {
+        padding-top: 700px;
+      }
       padding-bottom: 200px;
       .intro-heading {
         font-size: 65px;
