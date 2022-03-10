@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useRef } from "react";
 import PropTypes from "prop-types";
 
 import { Modal } from "react-bootstrap";
@@ -25,50 +25,59 @@ const RsvpDialog = ({
   const [plusOneGuest, setPlusOneGuest] = useState('');
   const [children, setChildren] = useState([]);
   const baseUrl = 'https://api.wedding.justinmendoza.net';
-  const guestApi = '/api/guests'
-  const url = baseUrl + guestApi;
+  const guestApi = '/api/guests';
+  const guestUrl = baseUrl + guestApi;
   const searchGuests = '/search';
-  const updateRsvp = '/rsvp'
+  const updateRsvp = '/rsvp';
+  const familyMembers = useRef(null);
 
   const updateMembers = useCallback(async (members) => {
     console.log(`Updating member isAttending field`);
     console.log(members);
-    // members.forEach(async member => {
-    //   await axios.patch(baseUrl+guestApi+updateRsvp,{ name: member.name, isAttending: member.isAttending });
-    // });
-  }, [])
+    members.forEach(async member => {
+      await axios.patch(guestUrl + updateRsvp, { name: member.name, isAttending: member.isAttending });
+    });
+  }, [guestUrl])
 
   const searchRsvp = useCallback(async e => {
 
     e.preventDefault();
-    
-    const guestsResponse = await axios.post(url+searchGuests, { name: guestName });
+
+    const guestsResponse = await axios.post(guestUrl + searchGuests, { name: guestName });
     const guestFound = guestsResponse.data;
 
-    if(!guestFound.sucess) {
+    if (!guestFound.sucess) {
       foundUser(true);
     }
 
-    if(guestFound) {
+    if (guestFound) {
+      familyMembers.current = guestFound.familyMembers;
       setGuestMembers(guestFound.familyMembers);
       setGuest(guestFound);
-    } 
-  }, [ guestName, setGuestMembers, foundUser, setGuest, url ]);
+    }
+  }, [guestName, setGuestMembers, foundUser, setGuest, guestUrl]);
 
   const submitGuest = useCallback(async e => {
     e.preventDefault();
     if (email) {
       console.log(`Updating ${guest.name} - ${email} `);
-      const updateEmailData = { name:guest.name, email }
+      const updateEmailData = { name: guest.name, email };
+      // await axios.post(guestUrl, updateEmailData);
       console.log(JSON.stringify(updateEmailData));
-    }    
+    }
+    console.log(familyMembers)
+    console.log(plusOneGuest)
+    if (plusOneGuest) {
+      console.log(`Guest has plus one`);
+    }
     updateMembers(guestMembers)
     setEmail('')
+    setPlusOneGuest('')
     setGuestMembers([])
     setGuestName('')
     foundUser(false)
     onHide()
-  }, [ onHide, setGuestName, setGuestMembers, foundUser, guestMembers, updateMembers, email, setEmail, guest ])
+  }, [onHide, setGuestName, setGuestMembers, foundUser, guestMembers, updateMembers, email, setEmail, guest, plusOneGuest, setPlusOneGuest, familyMembers])
 
   return (
     <Modal
@@ -84,19 +93,20 @@ const RsvpDialog = ({
       </Modal.Header>
       <Modal.Body>
         {
-          !guestMembers.length && 
-          <SearchRsvpForm 
-            searchRsvp={searchRsvp} 
-            setGuestName={setGuestName} 
-            noUserFound={noUserFound} 
+          !guestMembers.length &&
+          <SearchRsvpForm
+            searchRsvp={searchRsvp}
+            setGuestName={setGuestName}
+            noUserFound={noUserFound}
           />
         }
         {
-          guestMembers.length > 0 && 
-          <RsvpResults 
+          guestMembers.length > 0 &&
+          <RsvpResults
             setGuestMembers={setGuestMembers}
-            guestMembers={guestMembers} 
-            submitGuest={submitGuest} 
+            setPlusOneGuest={setPlusOneGuest}
+            guestMembers={guestMembers}
+            submitGuest={submitGuest}
             guest={guest}
             setEmail={setEmail}
           />
