@@ -1,147 +1,44 @@
-/* eslint-disable no-unused-vars */
-import React, { useCallback, useState } from "react";
+/* eslint-disable react/no-array-index-key */
+import React from "react";
 import PropTypes from "prop-types";
-import { Button, Form  } from "react-bootstrap"
+import { Button, Form } from "react-bootstrap"
+
+import RsvpGuestList from "./Rsvp/RsvpGuestList";
+import RsvpPlusOne from "./Rsvp/RsvpPlusOne"
+import RsvpChildrenInput from "./Rsvp/RsvpChildrenInput"
 import './RsvpResults.scss';
 
-const GuestItem = ({
-  guestMem,
-  index,
-}) => {
-  const { name } = guestMem;
-  const [isAttending, setAttending] = useState("no");
-
-  const updateAttending = useCallback(async e => {
-    const newValue = e.target.value;
-    setAttending(newValue);
-    guestMem.isAttending = newValue === "yes";
-  }, [ setAttending, guestMem ])
-
-  return (
-    <div className="guestItem">
-        <div className="name">{name}</div> 
-        <div className="attending">
-          <Form.Group>
-            <span className="attending-label">Attending: </span>
-            <Form.Check 
-              inline
-              label="Yes"
-              name={`attending-${index}`}
-              type="radio"
-              value="yes"
-              checked={isAttending === "yes"}
-              onChange={updateAttending}
-            />
-            <Form.Check 
-              inline
-              label="No"
-              name={`attending-${index}`}
-              type="radio"
-              value="no"
-              checked={isAttending === "no"}
-              onChange={updateAttending}
-            />
-          </Form.Group>   
-        </div>
-    </div>
-  )
-
-}
-
-GuestItem.propTypes = {
-  guestMem: PropTypes.object,
-  index: PropTypes.number,
-}
-
-GuestItem.defaultProps = {
-  guestMem: {},
-  index: null,
-};
-
-const RsvpResults = ({ 
+const RsvpResults = ({
   guest,
   guestMembers,
   submitGuest,
+  email,
   setEmail,
+  setPlusOneGuest,
+  kids,
+  setKids
 }) => {
-  const [plusOneInput, enablePlusOne] = useState(true);
-  const [numChildren, setNumChildren] = useState(0)
 
   return (
     <Form className="rsvp-form">
-      { guestMembers.length > 0 && <div>
-          {
-            guestMembers.map((guestMem, index) => {
-              return <GuestItem 
-                guestMem={guestMem} 
-                index={index}
-                key={guestMem._id}
-              />
-            })
-          }  
-        </div>
+      {
+        guestMembers.length > 0 && <RsvpGuestList guestMembers={guestMembers} />
       }
       {
-        guest.plusOne && 
-        <div className="plus-one">
-          <span className="plus-one-label">Plus One: </span>
-          <Form.Check 
-            inline
-            label="Yes"
-            name="plusOne"
-            type="radio"
-            onChange={e => enablePlusOne(false)}
-          />
-          <Form.Check 
-            inline
-            label="No"
-            name="plusOne"
-            type="radio"
-            onChange={e => enablePlusOne(true)}
-            checked={plusOneInput}
-            
-          />
-          <h3>Guest Name</h3>
-          <Form.Control type="guestName" placeholder="Enter guest name" disabled={plusOneInput}/>
-        </div>
+        guest.plusOne && <RsvpPlusOne setPlusOneGuest={setPlusOneGuest} />
       }
       {
-        guest.childrenAttending && 
-        <div className="children-dropdown">
-          <Form.Control 
-            as="select" 
-            value={numChildren}
-            onChange={e => setNumChildren(e.target.value)}
-            className="child-num-dropdown"
-            >
-            <option value="0">Number of Children</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </Form.Control>
-          {
-            numChildren > 0 && <>
-            {
-              Array(numChildren).fill(
-                { name: "" }
-              ).map((child, index) => {
-                return <Form.Control className="child-name-input" type="childName" placeholder="Enter child name" key={child}/>
-              })
-            }
-            </>
-          } 
-          
-        </div>
+        guest.childrenAttending && <RsvpChildrenInput kids={kids} setKids={setKids} />
       }
       <div className="event-summary">
         <h2>Event Summary</h2>
         <p>Get updates of these events to your inbox.</p>
-        <Form.Control 
-          className="rsvp-text-field" 
-          type="text" 
-          id="email" 
-          placeholder="E-mail" 
+        <Form.Control
+          className="rsvp-text-field"
+          type="text"
+          id="email"
+          placeholder="E-mail"
+          value={ email || '' }
           onChange={e => setEmail(e.target.value)}
         />
         <Button onClick={submitGuest}>Submit</Button>
@@ -154,14 +51,22 @@ RsvpResults.propTypes = {
   guest: PropTypes.any,
   guestMembers: PropTypes.array,
   submitGuest: PropTypes.func,
+  email: PropTypes.string,
   setEmail: PropTypes.func,
+  setPlusOneGuest: PropTypes.func,
+  kids: PropTypes.array,
+  setKids: PropTypes.func
 }
 
 RsvpResults.defaultProps = {
   guest: {},
   guestMembers: [],
   submitGuest: null,
-  setEmail: null
+  email: '',
+  setEmail: null,
+  setPlusOneGuest: null,
+  kids: [],
+  setKids: null
 }
 
 export default RsvpResults;

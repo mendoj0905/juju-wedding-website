@@ -53,11 +53,11 @@ const MyNavbar = ({ anchors, frontmatter }) => {
           <Icon iconName="BarsIcon" />
         </Navbar.Toggle>
         <Navbar.Collapse>
-          <Nav className="text-uppercase ml-auto">
+          <Nav className="text-uppercase ms-auto">
             {anchors.map((anchor) => (
-              
+
               showHideSection(anchor) && <NavItem key={anchor} to={anchor} onClick={closeMenu} />
-              
+
             ))}
           </Nav>
         </Navbar.Collapse>

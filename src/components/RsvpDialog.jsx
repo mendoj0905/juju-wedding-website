@@ -1,11 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useRef, useMemo, useEffect } from "react";
 import PropTypes from "prop-types";
-
 import { Modal } from "react-bootstrap";
-import axios from "axios";
 
 import RsvpResults from "./RsvpResults";
 import SearchRsvpForm from "./SearchRsvpForm";
+import GuestApi from "../libs/GuestApi";
 import "./RsvpDialog.scss";
 
 const RsvpDialog = ({
@@ -21,54 +20,55 @@ const RsvpDialog = ({
   ...restProps
 }) => {
 
+  const guestApi = useMemo(() => new GuestApi(), []);
   const [email, setEmail] = useState('');
   const [plusOneGuest, setPlusOneGuest] = useState('');
-  const [children, setChildren] = useState([]);
-  const baseUrl = 'https://api.wedding.justinmendoza.net';
-  const guestApi = '/api/guests'
-  const url = baseUrl + guestApi;
-  const searchGuests = '/search';
-  const updateRsvp = '/rsvp'
-
-  const updateMembers = useCallback(async (members) => {
-    console.log(`Updating member isAttending field`);
-    console.log(members);
-    // members.forEach(async member => {
-    //   await axios.patch(baseUrl+guestApi+updateRsvp,{ name: member.name, isAttending: member.isAttending });
-    // });
-  }, [])
+  const [kids, setKids] = useState([]);
+  const familyMembers = useRef(null);
 
   const searchRsvp = useCallback(async e => {
 
     e.preventDefault();
-    
-    const guestsResponse = await axios.post(url+searchGuests, { name: guestName });
-    const guestFound = guestsResponse.data;
+    const guestData = await guestApi.search(guestName)
 
-    if(!guestFound.sucess) {
+    if (!guestData) {
       foundUser(true);
     }
 
-    if(guestFound) {
-      setGuestMembers(guestFound.familyMembers);
-      setGuest(guestFound);
-    } 
-  }, [ guestName, setGuestMembers, foundUser, setGuest, url ]);
+    if (guestData) {
+      console.log(guestData);
+      familyMembers.current = guestData.familyMembers;
+      setGuestMembers(guestData.familyMembers);
+      setGuest(guestData);
+      setEmail(guestData.email);
+      setKids(guestData.children);
+    }
+  }, [guestName, setGuestMembers, foundUser, setGuest, guestApi]);
 
   const submitGuest = useCallback(async e => {
     e.preventDefault();
+
     if (email) {
-      console.log(`Updating ${guest.name} - ${email} `);
-      const updateEmailData = { name:guest.name, email }
-      console.log(JSON.stringify(updateEmailData));
-    }    
-    updateMembers(guestMembers)
-    setEmail('')
-    setGuestMembers([])
-    setGuestName('')
-    foundUser(false)
-    onHide()
-  }, [ onHide, setGuestName, setGuestMembers, foundUser, guestMembers, updateMembers, email, setEmail, guest ])
+      await guestApi.updateEmail(guest.name, email);
+    }
+    if (plusOneGuest) {
+      await guestApi.updatePlusOne(plusOneGuest, familyMembers.current[0].name);
+    }
+    if (kids) {
+      console.log(kids);
+      // await guestApi.updateKids(guestMembers, kids);
+    }
+    await guestApi.updateMembers(guestMembers);
+
+    setEmail('');
+    setPlusOneGuest('');
+    setGuestMembers([]);
+    setKids([]);
+    setGuestName('');
+    foundUser(false);
+    onHide();
+
+  }, [onHide, setGuestName, setGuestMembers, foundUser, guestMembers, email, setEmail, guest, plusOneGuest, setPlusOneGuest, guestApi, kids, setKids]);
 
   return (
     <Modal
@@ -84,21 +84,25 @@ const RsvpDialog = ({
       </Modal.Header>
       <Modal.Body>
         {
-          !guestMembers.length && 
-          <SearchRsvpForm 
-            searchRsvp={searchRsvp} 
-            setGuestName={setGuestName} 
-            noUserFound={noUserFound} 
+          !guestMembers.length &&
+          <SearchRsvpForm
+            searchRsvp={searchRsvp}
+            setGuestName={setGuestName}
+            noUserFound={noUserFound}
           />
         }
         {
-          guestMembers.length > 0 && 
-          <RsvpResults 
+          guestMembers.length > 0 &&
+          <RsvpResults
             setGuestMembers={setGuestMembers}
-            guestMembers={guestMembers} 
-            submitGuest={submitGuest} 
+            setPlusOneGuest={setPlusOneGuest}
+            guestMembers={guestMembers}
+            submitGuest={submitGuest}
             guest={guest}
+            email={email}
             setEmail={setEmail}
+            kids={kids}
+            setKids={setKids}
           />
         }
       </Modal.Body>
