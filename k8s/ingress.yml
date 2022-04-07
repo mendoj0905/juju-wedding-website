@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: juju-wedding-website-ingress
+  namespace: juju-wedding
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  tls:
+    - hosts:
+        - dev.wedding.justinmendoza.net
+      secretName: juju-wedding-website-tls
+  rules:
+    - host: dev.wedding.justinmendoza.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: juju-wedding-website-service
+                port:
+                  number: 80
