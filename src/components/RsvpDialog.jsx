@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useMemo, useEffect } from "react";
+import React, { useCallback, useState, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 
@@ -36,7 +36,6 @@ const RsvpDialog = ({
     }
 
     if (guestData) {
-      console.log(guestData);
       familyMembers.current = guestData.familyMembers;
       setGuestMembers(guestData.familyMembers);
       setGuest(guestData);
@@ -56,7 +55,7 @@ const RsvpDialog = ({
     }
     if (kids) {
       console.log(kids);
-      // await guestApi.updateKids(guestMembers, kids);
+      await guestApi.updateKids(guestMembers, kids);
     }
     await guestApi.updateMembers(guestMembers);
 

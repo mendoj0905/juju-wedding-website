@@ -1,38 +1,37 @@
 ---
-apiVersion: app/v1b
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: juju-wedding-website-dpeloyment
   namespace: juju-wedding
+  labels:
+    app: gatsby-app
 spec:
   replicas: 1
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: gatsby-app
   template:
     metadata:
       labels:
-        name: gatsby-app
+        app: gatsby-app
     spec:
       containers:
-        - image: jujubeee314/juju-wedding-site:2022.1-dev
+        - image: jujubeee314/juju-wedding-website:2022.1-dev
           name: juju-wedding-website
           resources:
-          livenessProbe:
-            httpGet:
-              path: /_status/healthz
-              port: 5000
-            initialDelaySeconds: 90
-            timeoutSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /_status/healthz
-              port: 5000
-            initialDelaySeconds: 30
-            timeoutSeconds: 10
+          imagePullPolicy: Always
+          # livenessProbe:
+          #   httpGet:
+          #     path: /_status/healthz
+          #     port: 5000
+          #   initialDelaySeconds: 90
+          #   timeoutSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /_status/healthz
+          #     port: 5000
+          #   initialDelaySeconds: 30
+          # timeoutSeconds: 10
           ports:
             - containerPort: 80
-      restartPolicy: Always
-      imagePullPolicy: Always

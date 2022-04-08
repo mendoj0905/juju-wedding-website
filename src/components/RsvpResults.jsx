@@ -28,7 +28,7 @@ const RsvpResults = ({
         guest.plusOne && <RsvpPlusOne setPlusOneGuest={setPlusOneGuest} />
       }
       {
-        guest.childrenAttending && <RsvpChildrenInput kids={kids} setKids={setKids} />
+        guest.childrenAttending && <RsvpChildrenInput guest={guest} kids={kids} setKids={setKids} />
       }
       <div className="event-summary">
         <h2>Event Summary</h2>
@@ -38,7 +38,7 @@ const RsvpResults = ({
           type="text"
           id="email"
           placeholder="E-mail"
-          value={ email || '' }
+          value={email || ''}
           onChange={e => setEmail(e.target.value)}
         />
         <Button onClick={submitGuest}>Submit</Button>
