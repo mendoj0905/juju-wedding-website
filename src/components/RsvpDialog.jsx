@@ -55,7 +55,7 @@ const RsvpDialog = ({
     }
     if (kids) {
       console.log(kids);
-      await guestApi.updateKids(guestMembers, kids);
+      // await guestApi.updateKids(guestMembers, kids);
     }
     await guestApi.updateMembers(guestMembers);
 

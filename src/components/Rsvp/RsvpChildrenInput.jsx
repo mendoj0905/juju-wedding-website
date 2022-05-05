@@ -1,70 +1,96 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-bootstrap"
 
-// const LOG = input => console.log(input);
+const ChildInput = ({ kid, guest, setKids }) => {
 
-const RsvpChildrenInput = ({ guest, kids, setKids }) => {
+  const [kidName, setKidName] = useState(() => {
+    if (kid) return kid.name;
+    return ""
+  });
+
+  const updateKid = e => {
+    const childrenArray = [...guest.children] || []
+    const name = e.target.value
+    setKidName(name)
+    console.log(name, kid.id)
+    if (name) {
+      childrenArray[kid.id] = name
+      console.log(childrenArray)
+      setKids(childrenArray)
+    }
+  }
+
+  return <Form.Control
+    className="child-name-input"
+    type="text"
+    placeholder="Enter child name"
+    key={kid.id}
+    id={kid.id}
+    value={kidName}
+    onChange={updateKid}
+  />
+}
+
+ChildInput.propTypes = {
+  kid: PropTypes.object,
+  guest: PropTypes.object,
+  setKids: PropTypes.func
+}
+
+ChildInput.defaultProps = {
+  kid: "",
+  guest: {},
+  setKids: null
+}
+
+const RsvpChildrenInput = ({ guest, setKids }) => {
 
   const [numKidInput, setNumKidInputField] = useState(() => {
     if (guest.children) return guest.children.length;
     return 0
   });
 
-  const [tempKidArray, setTempArray] = useState(() => {
-    if (guest.children) return guest.children;
+  const [kidsArray, setKidsArray] = useState(() => {
+    if (guest.children) return [...guest.children].map((childName, index) => ({ id: index, name: childName }));
     return []
   })
 
-  const handleInputChange = (e, kid) => {
-    const newKids = [...tempKidArray]
-    if (kid) {
-      newKids[kid.id] = e.target.value;
-    }
-    if (kid) {
-      setKids(newKids)
-      // } else {
-      //   newKids.splice(kid.id, 1);
-      //   setKids(newKids);
-    }
+  const dropDownChange = e => {
+    const numKids = parseInt(e.target.value, 10)
+    const emptyInputFields = [...Array(numKids).keys()].map(i => ({ id: i, name: '' }))
+    setNumKidInputField(numKids)
+    setKidsArray(emptyInputFields)
   }
 
-  const childInput = kid => {
-    console.log(kid)
-    return kid ? <Form.Control
-      className="child-name-input"
-      type="text"
-      placeholder="Enter child name"
-      key={kid.id}
-      id={kid.id}
-      value={kid.name}
-      onChange={e => handleInputChange(e, kid)}
-    /> : null;
-  }
-
-  const [inputArray, setInputArray] = useState(() => {
-    if (tempKidArray) {
-      console.log(tempKidArray)
-      return [...tempKidArray].map((childName, index) => ({ id: index, name: childName })).map(childInput)
-    }
-    return []
-  })
-
-  const generateKidsInput = useMemo(() => {
-    // console.log(tempKidArray);
-    if (tempKidArray) {
-      return inputArray
-    }
+  const generateKidsInput = () => {
     const emptyInputFields = [...Array(numKidInput).keys()].map(i => ({ id: i, name: '' }))
-    return emptyInputFields.map(childInput)
-  }, [numKidInput, childInput, tempKidArray, inputArray])
+    if (guest.children) {
+      return kidsArray.map(kid => {
+        return <ChildInput
+          kid={kid}
+          guest={guest}
+          setKid={setKids}
+          key={kid.id}
+        />
+      })
+    }
+    return emptyInputFields.map(kid => {
+      return <ChildInput
+        kid={kid}
+        guest={guest}
+        setKid={setKids}
+        key={kid.id}
+      />
+    })
+  }
 
   return (
     <div className="children-dropdown">
       <Form.Select
         as="select"
         value={numKidInput}
-        onChange={e => setNumKidInputField(parseInt(e.target.value, 10))}
+        onChange={dropDownChange}
         className="child-num-dropdown"
       >
         <option value="0">Number of Children</option>
@@ -74,9 +100,7 @@ const RsvpChildrenInput = ({ guest, kids, setKids }) => {
         <option value="4">4</option>
       </Form.Select>
       {
-        numKidInput > 0 && <>{
-          generateKidsInput()
-        }</>
+        numKidInput > 0 && generateKidsInput()
       }
     </div>
   )
@@ -84,13 +108,11 @@ const RsvpChildrenInput = ({ guest, kids, setKids }) => {
 
 RsvpChildrenInput.propTypes = {
   guest: PropTypes.any,
-  kids: PropTypes.array,
   setKids: PropTypes.func
 }
 
 RsvpChildrenInput.defaultProps = {
   guest: null,
-  kids: [],
   setKids: null
 }
 
