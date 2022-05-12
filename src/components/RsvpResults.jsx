@@ -15,8 +15,6 @@ const RsvpResults = ({
   email,
   setEmail,
   setPlusOneGuest,
-  kids,
-  setKids
 }) => {
 
   return (
@@ -28,7 +26,10 @@ const RsvpResults = ({
         guest.plusOne && <RsvpPlusOne setPlusOneGuest={setPlusOneGuest} />
       }
       {
-        guest.childrenAttending && <RsvpChildrenInput guest={guest} kids={kids} setKids={setKids} />
+        guest.childrenAttending &&
+        <RsvpChildrenInput
+          guest={guest}
+        />
       }
       <div className="event-summary">
         <h2>Event Summary</h2>
@@ -54,8 +55,6 @@ RsvpResults.propTypes = {
   email: PropTypes.string,
   setEmail: PropTypes.func,
   setPlusOneGuest: PropTypes.func,
-  kids: PropTypes.array,
-  setKids: PropTypes.func
 }
 
 RsvpResults.defaultProps = {
@@ -65,8 +64,6 @@ RsvpResults.defaultProps = {
   email: '',
   setEmail: null,
   setPlusOneGuest: null,
-  kids: [],
-  setKids: null
 }
 
 export default RsvpResults;

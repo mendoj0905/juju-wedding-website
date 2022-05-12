@@ -2,24 +2,22 @@ import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-bootstrap"
 
-const ChildInput = ({ kid, guest, setKids }) => {
+const ChildInput = ({ kid, guest }) => {
 
   const [kidName, setKidName] = useState(() => {
     if (kid) return kid.name;
     return ""
   });
 
-  const updateKid = e => {
+  const updateKid = useCallback(e => {
     const childrenArray = [...guest.children] || []
     const name = e.target.value
     setKidName(name)
-    console.log(name, kid.id)
     if (name) {
       childrenArray[kid.id] = name
-      console.log(childrenArray)
-      setKids(childrenArray)
+      guest.children = childrenArray
     }
-  }
+  }, [guest, kid])
 
   return <Form.Control
     className="child-name-input"
@@ -35,16 +33,14 @@ const ChildInput = ({ kid, guest, setKids }) => {
 ChildInput.propTypes = {
   kid: PropTypes.object,
   guest: PropTypes.object,
-  setKids: PropTypes.func
 }
 
 ChildInput.defaultProps = {
   kid: "",
   guest: {},
-  setKids: null
 }
 
-const RsvpChildrenInput = ({ guest, setKids }) => {
+const RsvpChildrenInput = ({ guest }) => {
 
   const [numKidInput, setNumKidInputField] = useState(() => {
     if (guest.children) return guest.children.length;
@@ -63,14 +59,13 @@ const RsvpChildrenInput = ({ guest, setKids }) => {
     setKidsArray(emptyInputFields)
   }
 
-  const generateKidsInput = () => {
+  const generateKidsInput = useCallback(() => {
     const emptyInputFields = [...Array(numKidInput).keys()].map(i => ({ id: i, name: '' }))
     if (guest.children) {
       return kidsArray.map(kid => {
         return <ChildInput
           kid={kid}
           guest={guest}
-          setKid={setKids}
           key={kid.id}
         />
       })
@@ -79,11 +74,10 @@ const RsvpChildrenInput = ({ guest, setKids }) => {
       return <ChildInput
         kid={kid}
         guest={guest}
-        setKid={setKids}
         key={kid.id}
       />
     })
-  }
+  }, [guest, kidsArray, numKidInput])
 
   return (
     <div className="children-dropdown">
@@ -108,12 +102,10 @@ const RsvpChildrenInput = ({ guest, setKids }) => {
 
 RsvpChildrenInput.propTypes = {
   guest: PropTypes.any,
-  setKids: PropTypes.func
 }
 
 RsvpChildrenInput.defaultProps = {
   guest: null,
-  setKids: null
 }
 
 export default RsvpChildrenInput;
