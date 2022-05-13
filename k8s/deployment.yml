@@ -17,7 +17,7 @@ spec:
         app: gatsby-app
     spec:
       containers:
-        - image: jujubeee314/juju-wedding-website:2022.1-dev
+        - image: jujubeee314/juju-wedding-website:2022.2-dev
           name: juju-wedding-website
           resources:
           imagePullPolicy: Always
