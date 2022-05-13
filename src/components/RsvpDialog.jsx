@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useMemo, useEffect } from "react";
+import React, { useCallback, useState, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 
@@ -23,7 +23,6 @@ const RsvpDialog = ({
   const guestApi = useMemo(() => new GuestApi(), []);
   const [email, setEmail] = useState('');
   const [plusOneGuest, setPlusOneGuest] = useState('');
-  const [kids, setKids] = useState([]);
   const familyMembers = useRef(null);
 
   const searchRsvp = useCallback(async e => {
@@ -36,39 +35,34 @@ const RsvpDialog = ({
     }
 
     if (guestData) {
-      console.log(guestData);
       familyMembers.current = guestData.familyMembers;
       setGuestMembers(guestData.familyMembers);
       setGuest(guestData);
       setEmail(guestData.email);
-      setKids(guestData.children);
     }
   }, [guestName, setGuestMembers, foundUser, setGuest, guestApi]);
 
   const submitGuest = useCallback(async e => {
     e.preventDefault();
-
     if (email) {
       await guestApi.updateEmail(guest.name, email);
     }
     if (plusOneGuest) {
       await guestApi.updatePlusOne(plusOneGuest, familyMembers.current[0].name);
     }
-    if (kids) {
-      console.log(kids);
-      // await guestApi.updateKids(guestMembers, kids);
+    if (guest.children) {
+      await guestApi.updateKids(guestMembers, guest.children);
     }
     await guestApi.updateMembers(guestMembers);
 
     setEmail('');
     setPlusOneGuest('');
     setGuestMembers([]);
-    setKids([]);
     setGuestName('');
     foundUser(false);
     onHide();
 
-  }, [onHide, setGuestName, setGuestMembers, foundUser, guestMembers, email, setEmail, guest, plusOneGuest, setPlusOneGuest, guestApi, kids, setKids]);
+  }, [onHide, setGuestName, setGuestMembers, foundUser, guestMembers, email, setEmail, guest, plusOneGuest, setPlusOneGuest, guestApi]);
 
   return (
     <Modal
@@ -101,8 +95,6 @@ const RsvpDialog = ({
             guest={guest}
             email={email}
             setEmail={setEmail}
-            kids={kids}
-            setKids={setKids}
           />
         }
       </Modal.Body>

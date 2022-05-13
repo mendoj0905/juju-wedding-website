@@ -1,5 +1,5 @@
 # Builds Gatsby file public folder
-FROM node:14-buster AS builder
+FROM node:16-buster AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY . .
 RUN yarn install && yarn build
 
 # Nginx to run website
-FROM nginx:alpine
+FROM arm64v8/nginx:alpine
 
 WORKDIR /usr/share/nginx/html
 
