@@ -1,0 +1,11 @@
+.accommodations-section {
+
+  .hotel-information {
+    list-style-type: none;
+  }
+
+  span {
+    font-weight: 900;
+    @include heading-font
+  }
+}

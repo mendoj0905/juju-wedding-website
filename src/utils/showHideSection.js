@@ -1,5 +1,6 @@
 const sections = {
   'Photos': true,
+  'Accommodations': true,
   'Our Story': false,
   'Story': false,
   'Event': false,
