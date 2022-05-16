@@ -96,6 +96,10 @@ export const query = graphql`
             subheader
             content
           }
+          faq {
+            question
+            answer
+          }
         }
         fields {
           fileName
@@ -127,7 +131,7 @@ const IndexPage = ({ data }) => {
     } else {
       setWrongPassword(true);
     }
-  }, [ password ]);
+  }, [password]);
 
 
   return (
@@ -154,7 +158,7 @@ const IndexPage = ({ data }) => {
         })
       }
       <Footer frontmatter={footerNode.frontmatter} />
-      {!getSessionPassword() && <Password show={showPassword} onHide={handleHidePassword} isWrongPassword={wrongPassword} setPassword={setPassword}/>}
+      {!getSessionPassword() && <Password show={showPassword} onHide={handleHidePassword} isWrongPassword={wrongPassword} setPassword={setPassword} />}
     </>
   );
 };

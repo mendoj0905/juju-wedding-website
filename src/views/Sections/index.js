@@ -5,3 +5,4 @@ export { default as Event } from "./Event";
 export { default as WeddingParty } from "./WeddingParty";
 export { default as Clients } from "./Clients";
 export { default as Accommodations } from "./Accommodations";
+export { default as FAQ } from "./FAQ";

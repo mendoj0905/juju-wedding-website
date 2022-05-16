@@ -1,10 +1,12 @@
 .section-header {
   h2.section-heading {
-    font-size: 40px;
+    font-size: 50px;
     margin-top: 0;
     margin-bottom: 35px;
+    color: $primary;
     @include gv-font;
   }
+
   h3.section-subheading {
     font-size: 16px;
     font-weight: 400;
