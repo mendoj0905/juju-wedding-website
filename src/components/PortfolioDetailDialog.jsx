@@ -3,10 +3,8 @@ import PropTypes from "prop-types";
 
 import {
   Modal,
-  // Button
 } from "react-bootstrap";
 import Image from "components/Image";
-// import Icon from "./Icon";
 
 const PortfolioDetailDialog = ({
   onHide,
@@ -15,7 +13,6 @@ const PortfolioDetailDialog = ({
   header,
   subheader,
   content,
-  extraInfo,
   ...restProps
 }) => {
   return (
@@ -26,27 +23,15 @@ const PortfolioDetailDialog = ({
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      {/* <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">{header}</Modal.Title>
-      </Modal.Header> */}
       <Modal.Body className="mx-auto">
-        <p className="item-intro text-muted">{subheader}</p>
         <Image
           className="img-fluid d-block"
           fileName={imageFileName}
           alt={imageAlt || header || subheader}
         />
-        {/* <p>{content}</p> */}
-        {/* {extraInfo} */}
+        <p className="item-intro text-muted">{subheader}</p>
+        <p>{content}</p>
       </Modal.Body>
-      {/* <Modal.Footer>
-        <div className="mx-auto">
-          <Button variant="primary" onClick={onHide}>
-            <Icon iconName="CloseIcon" />
-            &nbsp; Close Project
-          </Button>
-        </div>
-      </Modal.Footer> */}
     </Modal>
   );
 };
@@ -58,7 +43,6 @@ PortfolioDetailDialog.propTypes = {
   header: PropTypes.string,
   subheader: PropTypes.string,
   content: PropTypes.string,
-  extraInfo: PropTypes.any,
 };
 
 PortfolioDetailDialog.defaultProps = {
@@ -68,7 +52,6 @@ PortfolioDetailDialog.defaultProps = {
   header: "",
   subheader: "",
   content: "",
-  extraInfo: null,
 };
 
 export default PortfolioDetailDialog;

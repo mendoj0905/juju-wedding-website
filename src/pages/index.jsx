@@ -51,7 +51,6 @@ export const query = graphql`
           menuText
           portfolios {
             content
-            extraInfo
             header
             subheader
             imageFileNameDetail
@@ -95,6 +94,7 @@ export const query = graphql`
             imageContent
             imageFileName
             subheader
+            content
           }
         }
         fields {

@@ -1,8 +1,8 @@
 const sections = {
   'Photos': true,
   'Accommodations': true,
-  'Our Story': false,
-  'Story': false,
+  'Our Story': true,
+  'Story': true,
   'Event': false,
   'WeddingDetails': false,
   'Wedding Details': false,
