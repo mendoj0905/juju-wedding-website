@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import { Col } from "react-bootstrap";
 import Image from "components/Image";
-import Icon from "components/Icon";
 import PortfolioDetailDialog from "components/PortfolioDetailDialog";
 
 import "./PhotoItem.scss";
@@ -43,14 +42,10 @@ const PhotoItem = ({
           />
           <div className="portfolio-hover">
             <div className="portfolio-hover-content">
-              <Icon iconName="PlusIcon" size="2x" />
+              <p>{subheader}</p>
             </div>
           </div>
         </a>
-        {/* <div className="portfolio-caption">
-          <h4>{header}</h4>
-          {subheader ? <p className="text-muted">{subheader}</p> : null}
-        </div> */}
       </Col>
       <PortfolioDetailDialog
         show={showDetail}
