@@ -1,0 +1,12 @@
+.travel-section {
+
+  h4 {
+    font-size: 40px;
+    @include gv-font;
+  }
+
+  .itinaries-btn {
+    margin: 0 0 80px;
+    width: 300px;
+  }
+}

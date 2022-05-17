@@ -29,7 +29,7 @@ faq: [
   },
   { 
     question: "Are there any COVID-19 protocols in place?",
-    answer: "Mauris ut dui congue, fermentum enim at, bibendum nunc. Vestibulum gravida nisi vel malesuada cursus. Aenean ultrices neque lacus, vitae fringilla arcu blandit et."
+    answer: "Mauris ut dui congue, fermentum enim at, bibendum nunc. Vestibulum gravida nisi vel malesuada cursus. Aenean ultrices neque lacus, vitae fringilla arcu blandit et. [Gatsby](https://www.gatsbyjs.com/)"
   },
   
 ]

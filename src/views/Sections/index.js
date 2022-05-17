@@ -6,3 +6,5 @@ export { default as WeddingParty } from "./WeddingParty";
 export { default as Clients } from "./Clients";
 export { default as Accommodations } from "./Accommodations";
 export { default as FAQ } from "./FAQ";
+export { default as Travel } from "./Travel";
+export { default as ThingsToDoSee } from "./ThingsToDoSee";

@@ -2,16 +2,13 @@ const sections = {
   'Photos': true,
   'Our Story': true,
   'Story': true,
+  'WeddingParty': true,
+  'Wedding Party': true,
   'Accommodations': true,
+  'Things To Do / See': true,
+  'ThingsToDoSee': true,
+  'Travel': true,
   'FAQ': true,
-  'Event': false,
-  'WeddingDetails': false,
-  'Wedding Details': false,
-  'WeddingParty': false,
-  'Wedding Party': false,
-  'Travel': false,
-  'Clients': false,
-  'RSVP': false,
 }
 
 export default function showHideSection(sectionName) {

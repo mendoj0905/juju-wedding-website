@@ -5,9 +5,9 @@ import clsx from "clsx";
 import { Row } from "react-bootstrap";
 import SectionHeader from "components/SectionHeader";
 import PageSection from "components/PageSection";
-import "./FAQ.scss"
+import "./ThingsToDoSee.scss"
 
-const Faq = ({ className, frontmatter }) => {
+const ThingsToDoSee = ({ className, frontmatter }) => {
   if (!frontmatter) {
     return null;
   }
@@ -16,34 +16,25 @@ const Faq = ({ className, frontmatter }) => {
     anchor,
     header: rootHeader,
     subheader: rootSubHeader,
-    faq
   } = frontmatter;
 
   return (
-    <PageSection className={clsx("faq-section", className)} id={anchor}>
+    <PageSection className={clsx("things-to-do-see-section", className)} id={anchor}>
       <Row>
         <SectionHeader header={rootHeader} subheader={rootSubHeader} />
       </Row>
-      <Row>
-        {faq.map(({ question, answer }) => (
-          <div key={question.length}>
-            <h4>{question}</h4>
-            <p>{answer}</p>
-          </div>
-        ))}
-      </Row>
     </PageSection>
   );
-}
+};
 
-Faq.propTypes = {
+ThingsToDoSee.propTypes = {
   className: PropTypes.string,
   frontmatter: PropTypes.object,
 };
 
-Faq.defaultProps = {
+ThingsToDoSee.defaultProps = {
   className: null,
   frontmatter: null,
 };
 
-export default Faq;
+export default ThingsToDoSee;
