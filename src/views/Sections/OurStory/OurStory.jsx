@@ -7,7 +7,7 @@ import SectionHeader from "components/SectionHeader";
 import PageSection from "components/PageSection";
 import nl2br from "utils/nl2br";
 
-import "./Story.scss";
+import "./OurStory.scss";
 
 const Story = ({ className, frontmatter }) => {
   if (!frontmatter) {

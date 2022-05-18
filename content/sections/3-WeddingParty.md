@@ -3,7 +3,7 @@ anchor: "Wedding Party"
 header: "Wedding Party"
 subheader: ""
 content: ""
-teamMember: [
+weddingMembers: [
   {
     imageFileName: "weddingparty/julie.jpg",
     header: "Julie Kristin Palaganas",

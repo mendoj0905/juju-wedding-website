@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import Image from "components/Image";
 
-import "./TeamMember.scss";
+import "./WeddingMember.scss";
 
-const TeamMember = ({
+const WeddingMember = ({
   imageFileName,
   imageAlt,
   header,
@@ -17,6 +17,7 @@ const TeamMember = ({
         className="mx-auto circle rounded-circle"
         fileName={imageFileName}
         alt={header || imageAlt}
+        crop="NORTH"
       />
       <h4>{header}</h4>
       <p className="text-muted">{subheader}</p>
@@ -24,7 +25,7 @@ const TeamMember = ({
   );
 };
 
-TeamMember.propTypes = {
+WeddingMember.propTypes = {
   imageFileName: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
   header: PropTypes.string,
@@ -38,7 +39,7 @@ TeamMember.propTypes = {
   }),
 };
 
-TeamMember.defaultProps = {
+WeddingMember.defaultProps = {
   imageAlt: null,
   header: "",
   subheader: "",
@@ -51,4 +52,4 @@ TeamMember.defaultProps = {
   },
 };
 
-export default TeamMember;
+export default WeddingMember;

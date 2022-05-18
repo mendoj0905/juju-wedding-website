@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Row, Col } from "react-bootstrap";
-import TeamMember from "components/TeamMember";
+import WeddingMember from "components/WeddingMember";
 import SectionHeader from "components/SectionHeader";
 import PageSection from "components/PageSection";
 import "./WeddingParty.scss";
@@ -17,7 +17,7 @@ const WeddingParty = ({ className, frontmatter }) => {
     header: rootHeader,
     subheader: rootSubHeader,
     content: rootContent,
-    teamMember,
+    weddingMembers,
   } = frontmatter;
 
   return (
@@ -26,9 +26,9 @@ const WeddingParty = ({ className, frontmatter }) => {
         <SectionHeader header={rootHeader} subheader={rootSubHeader} />
       </Row>
       <Row>
-        {teamMember.map(({ header, ...tmProps }) => (
+        {weddingMembers.map(({ header, ...tmProps }) => (
           <Col sm={4} key={header}>
-            <TeamMember header={header} {...tmProps} />
+            <WeddingMember header={header} {...tmProps} />
           </Col>
         ))}
       </Row>

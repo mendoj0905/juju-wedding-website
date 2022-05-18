@@ -1,12 +1,22 @@
 .travel-section {
 
+  .hotel-information {
+    list-style-type: none;
+  }
+
+  span {
+    font-weight: 900;
+    @include heading-font
+  }
+
   h4 {
     font-size: 40px;
     @include gv-font;
   }
 
-  .itinaries-btn {
+  .itinerary-btn {
     margin: 0 0 80px;
     width: 300px;
   }
+
 }

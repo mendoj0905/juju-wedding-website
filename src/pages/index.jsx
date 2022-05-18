@@ -73,16 +73,9 @@ export const query = graphql`
             twitter
           }
           subheader
-          teamMember {
+          weddingMembers {
             header
             imageFileName
-            social {
-              facebook
-              github
-              linkedin
-              medium
-              twitter
-            }
             subheader
           }
           telephone

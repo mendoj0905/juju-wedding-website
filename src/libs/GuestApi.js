@@ -7,7 +7,9 @@ class GuestApi {
   constructor() {
     this.baseUrl = 'https://api.wedding.justinmendoza.net';
     this.guestPathApi = '/api/guests';
+    this.photoPathApi = '/api/photos';
     this.guestApi = this.baseUrl + this.guestPathApi;
+    this.photoApi = this.baseUrl + this.photoPathApi;
   }
 
   async search(name) {
@@ -16,7 +18,7 @@ class GuestApi {
     if (response.data.success === false) {
       return false;
     }
-    
+
     const { isAttending, email, familyMembers, children, plusOne, childrenAttending } = response.data;
 
     const guest = new Guest(name, isAttending, email, familyMembers, children, plusOne, childrenAttending);
@@ -29,10 +31,10 @@ class GuestApi {
 
   async updatePlusOne(plusOneName, familyMembersName) {
     const prevFamily = { name: familyMembersName };
-    const newGuest = { name: plusOneName, familyMembers: [ prevFamily ] };
+    const newGuest = { name: plusOneName, familyMembers: [prevFamily] };
 
     const newGuestResponse = await axios.post(`${this.guestApi}`, newGuest);
-    await axios.patch(`${this.guestApi}/${RSVP}`, { name: prevFamily.name, familyMembers: newGuestResponse.data.familyMembers, plusOne: false} );
+    await axios.patch(`${this.guestApi}/${RSVP}`, { name: prevFamily.name, familyMembers: newGuestResponse.data.familyMembers, plusOne: false });
   };
 
   async updateEmail(name, email) {
@@ -45,10 +47,16 @@ class GuestApi {
     });
   }
 
-  async updateKids(members, kids) { 
+  async updateKids(members, kids) {
     members.forEach(async member => {
-      await axios.patch(`${this.guestApi}/${RSVP}`, { name: member.name, children: kids});
+      await axios.patch(`${this.guestApi}/${RSVP}`, { name: member.name, children: kids });
     });
+  }
+
+  async getPhotos(id) {
+    const response = await axios.post(`${this.photoApi}`, { id });
+    const { photos } = response.data;
+    return photos;
   }
 
 }
