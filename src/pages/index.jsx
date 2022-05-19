@@ -58,13 +58,6 @@ export const query = graphql`
           }
           privacyHref
           privacyText
-          services {
-            content
-            header
-            subheader
-            iconName
-            imageFileName
-          }
           social {
             facebook
             github
@@ -73,7 +66,27 @@ export const query = graphql`
             twitter
           }
           subheader
-          weddingMembers {
+          parents {
+            header
+            imageFileName
+            subheader
+          }
+          bridesmaids {
+            header
+            imageFileName
+            subheader
+          }
+          groomsmen {
+            header
+            imageFileName
+            subheader
+          }
+          kids {
+            header
+            imageFileName
+            subheader
+          }
+          sponsors {
             header
             imageFileName
             subheader

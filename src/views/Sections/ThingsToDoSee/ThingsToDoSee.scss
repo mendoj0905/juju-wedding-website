@@ -10,4 +10,9 @@
     margin: 0 auto 30px;
     width: 300px;
   }
+
+  span {
+    font-weight: 900;
+    @include heading-font;
+  }
 }

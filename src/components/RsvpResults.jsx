@@ -33,7 +33,7 @@ const RsvpResults = ({
       }
       <div className="event-summary">
         <h2>Event Summary</h2>
-        <p>Get updates of these events to your inbox.</p>
+        <p className="text-center">Get updates of these events to your inbox.</p>
         <Form.Control
           className="rsvp-text-field"
           type="text"

@@ -27,8 +27,8 @@ const Faq = ({ className, frontmatter }) => {
       <Row>
         {faq.map(({ question, answer }) => (
           <div key={question.length}>
-            <h4>{question}</h4>
-            <p>{answer}</p>
+            <h4 className="faq-question">{question}</h4>
+            <p className="faq-answer">{answer}</p>
           </div>
         ))}
       </Row>
