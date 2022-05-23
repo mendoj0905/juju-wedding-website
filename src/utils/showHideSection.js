@@ -4,7 +4,7 @@ const sections = {
   'Our Story': true,
   'Wedding Party': true,
   'Travel': true,
-  'Things To Do / See': true,
+  'Things To Do / See / Eat': true,
   'FAQ': true,
   // Sections
   'OurStory': true,

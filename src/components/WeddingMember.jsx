@@ -12,12 +12,11 @@ const WeddingMember = ({
   subheader,
 }) => {
   return (
-    <div className="team-member">
+    <div className="wedding-member">
       <Image
         className="mx-auto circle rounded-circle"
         fileName={imageFileName}
         alt={header || imageAlt}
-        crop="NORTH"
       />
       <h4>{header}</h4>
       <p className="text-muted">{subheader}</p>

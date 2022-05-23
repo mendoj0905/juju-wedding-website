@@ -1,4 +1,4 @@
 ---
-anchor: "Things To Do / See"
+anchor: "Things To Do / See / Eat"
 header: "Things To Do / See / Eat"
 subheader: ""
