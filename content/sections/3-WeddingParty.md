@@ -22,8 +22,8 @@ bridesmaids: [
     subheader: "Maid of Honor"
   },
   {
-    imageFileName: "weddingparty/jessica.jpg",
-    header: "Jessica",
+    imageFileName: "weddingparty/jessah.jpg",
+    header: "Jessah",
     subheader: "Bridesmaid"
   },
   {
@@ -81,7 +81,7 @@ groomsmen: [
   {
     imageFileName: "weddingparty/troy.jpg",
     header: "Troy",
-    subheader: "Groomsman / Officiant"
+    subheader: "Officiant / Groomsman"
   },
 ]
 kids: [

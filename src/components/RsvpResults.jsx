@@ -18,7 +18,7 @@ const RsvpResults = ({
 }) => {
 
   return (
-    <Form className="rsvp-form">
+    <Form className="rsvp-form" onSubmit={submitGuest}>
       {
         guestMembers.length > 0 && <RsvpGuestList guestMembers={guestMembers} />
       }

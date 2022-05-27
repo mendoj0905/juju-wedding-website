@@ -17,6 +17,7 @@ const RsvpDialog = ({
   foundUser,
   guestMembers,
   setGuestMembers,
+  setOpenRsvp,
   ...restProps
 }) => {
 
@@ -42,6 +43,16 @@ const RsvpDialog = ({
     }
   }, [guestName, setGuestMembers, foundUser, setGuest, guestApi]);
 
+  const clearRsvpModalData = useCallback(() => {
+    setEmail('');
+    setPlusOneGuest('');
+    setGuestMembers([]);
+    setGuestName('');
+    setGuest({})
+    foundUser(false);
+    setOpenRsvp(false);
+  }, [setEmail, setPlusOneGuest, setGuestMembers, setGuestName, foundUser, setOpenRsvp, setGuest])
+
   const submitGuest = useCallback(async e => {
     e.preventDefault();
     if (email) {
@@ -55,20 +66,15 @@ const RsvpDialog = ({
     }
     await guestApi.updateMembers(guestMembers);
 
-    setEmail('');
-    setPlusOneGuest('');
-    setGuestMembers([]);
-    setGuestName('');
-    foundUser(false);
-    onHide();
+    clearRsvpModalData()
 
-  }, [onHide, setGuestName, setGuestMembers, foundUser, guestMembers, email, setEmail, guest, plusOneGuest, setPlusOneGuest, guestApi]);
+  }, [clearRsvpModalData, guestMembers, email, guest, plusOneGuest, guestApi]);
 
   return (
     <Modal
       className="rsvp-modal"
       {...restProps}
-      onHide={onHide}
+      onHide={clearRsvpModalData}
       size="xl"
       centered
       fullscreen="true"
@@ -113,6 +119,7 @@ RsvpDialog.propTypes = {
   foundUser: PropTypes.func,
   guestMembers: PropTypes.array,
   setGuestMembers: PropTypes.func,
+  setOpenRsvp: PropTypes.func,
 }
 
 RsvpDialog.defaultProps = {
@@ -125,6 +132,7 @@ RsvpDialog.defaultProps = {
   foundUser: null,
   guestMembers: [],
   setGuestMembers: null,
+  setOpenRsvp: null,
 }
 
 export default RsvpDialog;

@@ -10,16 +10,16 @@ const SearchRsvpForm = ({
   noUserFound
 }) => {
   return (
-    <Form className="rsvp-form-box">
+    <Form className="rsvp-form-box" onSubmit={searchRsvp}>
       <h2>Please enter the name on your invitation</h2>
-      <Form.Control 
-        type="text" 
-        id="name" 
+      <Form.Control
+        type="text"
+        id="name"
         placeholder="Name"
-        onChange={ e => setGuestName(e.target.value) }
+        onChange={e => setGuestName(e.target.value)}
       />
       {noUserFound && <p>No guest found. Please enter name on your invitation.</p>}
-      <Button onClick={ searchRsvp }>Find RSVP</Button>
+      <Button onClick={searchRsvp}>Find RSVP</Button>
     </Form>
   )
 }
