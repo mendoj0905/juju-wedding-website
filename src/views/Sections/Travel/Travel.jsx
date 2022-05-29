@@ -62,7 +62,7 @@ const Travel = ({ className, frontmatter }) => {
         <Col>
           <h4>Itinerary</h4>
           <p>We&apos;ve provided some suggested itineraries including a detailed sample itinerary as-well-as the itinerary that we are going to follow. Feel free to use these as inspiration when planning your own schedule. We&apos;re also open to meeting up at any point during this trip.</p>
-          <Button href="https://docs.google.com/spreadsheets/d/1IBDZRQG3U2Qs86xMmGg-ZXEPBshCPzh9HxQM_ZTPRUk/edit?usp=sharing" target="_blank" className="itinerary-btn">Sample Itineraries</Button>
+          <Button href="https://docs.google.com/spreadsheets/d/1IBDZRQG3U2Qs86xMmGg-ZXEPBshCPzh9HxQM_ZTPRUk/edit?usp=sharing" target="_blank" className="itinerary-btn">Itineraries (Google Sheets)</Button>
 
           <h4>Covid-19 / Concerns</h4>
           <p>Your health and safety is most important to us. We want to assure you that our venue will take the proper precautions to ensure that you will have a safe and enjoyable time. We will continue to update this website and let you know if there are any changes.</p>
@@ -73,7 +73,7 @@ const Travel = ({ className, frontmatter }) => {
             <li>Hawaii&apos;s indoor mask mandate ended on March 25, 2022. Masks are still strongly recommended for people over age 65, those with compromised immune systems or who care for people at risk of severe illness, and those unvaccinated for COVID-19.</li>
             <li>Some businesses may still require or encourage the wearing of masks.</li>
           </ul>
-          <h5>Source: <a target="_blank" href="https://www.gohawaii.com/travel-requirements" rel="noreferrer">Go Hawii - Travel Requirements</a></h5>
+          <h5>Source: <a target="_blank" href="https://www.gohawaii.com/travel-requirements" rel="noreferrer">Go Hawaii - Travel Requirements</a></h5>
         </Col>
       </Row>
     </PageSection>

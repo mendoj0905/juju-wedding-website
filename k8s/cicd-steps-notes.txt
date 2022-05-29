@@ -1,3 +1,0 @@
-1. build image
-2. push to registry
-3. deploy to cluster

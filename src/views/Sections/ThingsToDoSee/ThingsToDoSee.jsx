@@ -25,8 +25,8 @@ const ThingsToDoSee = ({ className, frontmatter }) => {
       </Row>
       <Row>
         <p className="text-center">Feel free to checkout our Google Sheets with some our reccommended places. We have a lot of food places!</p>
-        <Button href="https://docs.google.com/spreadsheets/d/1rso2PQwa2lp90TPODRgjnVN30RDgfTOtYQ0FDEMJMZE/edit?usp=sharing" target="_blank" className="things-to-do-btn">See List</Button>
-        <p>Our venue, Kualoa Ranch, offers 20% off our tours and activities for our guests which will be valid for 1 week prior to your wedding and run through 1 week after your wedding. Please use - <span>MENDOZA20</span> for the promotional code when booking at <a target="_blank" rel="noreferrer" href="https://www.kualoa.com/kualoa-tours-activities/">Kualoa Tours + Activities</a></p>
+        <Button href="https://docs.google.com/spreadsheets/d/1rso2PQwa2lp90TPODRgjnVN30RDgfTOtYQ0FDEMJMZE/edit?usp=sharing" target="_blank" className="things-to-do-btn">See List (Google Sheets)</Button>
+        <p>Our venue, Kualoa Ranch, offers 20% off our tours and activities for our guests which will be valid for 1 week prior to your wedding and run through 1 week after our wedding. Please use - <span>MENDOZA20</span> for the promotional code when booking at <a target="_blank" rel="noreferrer" href="https://www.kualoa.com/kualoa-tours-activities/">Kualoa Tours + Activities</a></p>
       </Row>
       <Row>
         <div className="embed-responsive embed-responsive-16by9">

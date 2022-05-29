@@ -113,7 +113,7 @@ kids: [
 ]
 sponsors: [
   {
-    imageFileName: "weddingparty/placeholder.jpg",
+    imageFileName: "weddingparty/arnel.jpg",
     header: "Arnel",
     subheader: "Primary Sponsor"
   },
