@@ -1,8 +1,6 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ develop ]
   pull_request:
     branches: [ develop ]
 
@@ -11,8 +9,3 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile.juju-wedding-site --tag juju-wedding-site:$(date +%s)
