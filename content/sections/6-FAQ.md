@@ -26,7 +26,7 @@ faq: [
   },
   { 
     question: 'Are you having an unplugged ceremony?',
-    answer: 'While we realize that everyone will want to take their own pictures and videos, we would prefer that you be fully present during the ceremony so that you can enjoy our special moment with us. We promise to share our professional photos with you after! After the ceremony, please feel free to use your devices at your will and remember to tag us in your social media posts! (mention # here: ____________________)'
+    answer: 'While we realize that everyone will want to take their own pictures and videos, we would prefer that you be fully present during the ceremony so that you can enjoy our special moment with us. We promise to share our professional photos with you after! After the ceremony, please feel free to use your devices at your will and remember to tag us in your social media posts!'
   },
   {
     question: 'Will there be a livestream of the ceremony?',
