@@ -18,7 +18,7 @@ const RsvpResults = ({
 }) => {
 
   return (
-    <Form className="rsvp-form">
+    <Form className="rsvp-form" onSubmit={submitGuest}>
       {
         guestMembers.length > 0 && <RsvpGuestList guestMembers={guestMembers} />
       }
@@ -33,7 +33,7 @@ const RsvpResults = ({
       }
       <div className="event-summary">
         <h2>Event Summary</h2>
-        <p>Get updates of these events to your inbox.</p>
+        <p className="text-center">Get updates of these events to your inbox.</p>
         <Form.Control
           className="rsvp-text-field"
           type="text"

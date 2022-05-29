@@ -12,7 +12,7 @@ module.exports = {
           views: "./src/views",
           context: "./src/context",
           utils: "./src/utils",
-
+          libs: "./src/libs",
           config: "./config",
         },
       },

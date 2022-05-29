@@ -17,7 +17,8 @@ spec:
         app: gatsby-app
     spec:
       containers:
-        - image: jujubeee314/juju-wedding-website:2022.2-dev
+        - image: registry.justinmendoza.net/juju-wedding-website:2022.8-dev
+          # - image: jujubeee314/juju-wedding-website:2022.7-dev
           name: juju-wedding-website
           resources:
           imagePullPolicy: Always
@@ -35,3 +36,5 @@ spec:
           # timeoutSeconds: 10
           ports:
             - containerPort: 80
+      imagePullSecrets:
+        - name: regcred

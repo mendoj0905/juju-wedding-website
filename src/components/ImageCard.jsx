@@ -21,23 +21,15 @@ const ImageCard = ({
   const [guestName, setGuestName] = useState('');
   const [guestMembers, setGuestMembers] = useState([]);
   const [noUserFound, foundUser] = useState(false);
-  
+
   const handleOpenRsvp = useCallback(() => {
     setOpenRsvp(true);
   }, []);
 
-  const handleHideRsvp = useCallback(() => {
-    setOpenRsvp(false);
-    setGuest({});
-    setGuestName('');
-    foundUser(false);
-  }, []);
-
   return (
     <Card className={clsx("image-card bg-dark text-white text-center", className)}>
-      <RsvpDialog 
+      <RsvpDialog
         show={openRsvp}
-        onHide={handleHideRsvp}
         guest={guest}
         setGuest={setGuest}
         guestName={guestName}
@@ -46,6 +38,7 @@ const ImageCard = ({
         foundUser={foundUser}
         guestMembers={guestMembers}
         setGuestMembers={setGuestMembers}
+        setOpenRsvp={setOpenRsvp}
       />
       <Image
         className="image img-bg"
@@ -59,8 +52,8 @@ const ImageCard = ({
             <div className="intro-lead-in">{subheader}</div>
             <div className="wedding-location">Paliku Gardens</div>
             <div className="wedding-address">Kualoa Ranch, Kaneohe, HI 96744</div>
-            <Button 
-              className="rsvp-button" 
+            <Button
+              className="rsvp-button"
               onClick={handleOpenRsvp}>RSVP</Button>
             {extraInfo}
           </div>
