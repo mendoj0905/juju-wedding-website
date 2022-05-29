@@ -38,14 +38,16 @@ const Travel = ({ className, frontmatter }) => {
         </Col>
         <Col sm={1} md={6}>
           <h5>Courtyard Oahu North Shore</h5>
-          <p>A block of rooms is being held for our wedding from <span>Sunday, October 23</span> to <span>Wednesday, October 26</span>. A minimum of 2 nights is required to book. To make your reservation, please <a target="_target" href="https://www.marriott.com/events/start.mi?id=1650583046458&key=GRP">BOOK ONLINE</a>.</p>
+          <p>A block of rooms is being held for our wedding from <span>Sunday, October 23</span> to <span>Wednesday, October 26</span>. A minimum of 2 nights is required to book. To make your reservation, please click the button below: </p>
+
+          <Button className="text-center booking-btn" target="_target" href="https://www.marriott.com/events/start.mi?id=1650583046458&key=GRP">BOOK ONLINE</Button>
 
           <ul className="hotel-information">
             <li><span>Address:</span> <a target="_target" href="https://g.page/CourtyardOahuNorthShore?share">55-400 Kamehameha Hwy, Laie, HI 96762</a></li>
             <li><span>Phone:</span> (808) 293-4900</li>
           </ul>
 
-          <p>The hotel has NO resort fees, NO extra person charges, and NO destination fees.</p>
+          <p>The hotel has NO resort fees, NO extra person charges, and NO destination fees. On-site parking is $15 a night.</p>
 
           <ul>
             <li>Standard 2 Queen - $244/night plus taxes</li>
@@ -61,13 +63,13 @@ const Travel = ({ className, frontmatter }) => {
       <Row>
         <Col>
           <h4>Itinerary</h4>
-          <p>We&apos;ve provided some suggested itineraries including a detailed sample itinerary as-well-as the itinerary that we are going to follow. Feel free to use these as inspiration when planning your own schedule. We&apos;re also open to meeting up at any point during this trip.</p>
+          <p>We&apos;ve provided a suggested itinerary, as well as our itinerary which includes our detailed timeline. Feel free to use these as inspiration when planning your own schedule. We&apos;re also open to meeting up at any point during this trip.</p>
           <Button href="https://docs.google.com/spreadsheets/d/1IBDZRQG3U2Qs86xMmGg-ZXEPBshCPzh9HxQM_ZTPRUk/edit?usp=sharing" target="_blank" className="itinerary-btn">Itineraries (Google Sheets)</Button>
 
           <h4>Covid-19 / Concerns</h4>
           <p>Your health and safety is most important to us. We want to assure you that our venue will take the proper precautions to ensure that you will have a safe and enjoyable time. We will continue to update this website and let you know if there are any changes.</p>
 
-          <p className="hawaii-covid-site-source">Beginning March 26, 2022, there will be no COVID-related requirements for arriving domestic passengers. Travelers arriving in Hawaii directly from international airports must still comply with <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/international-travel/index.html" target="_blank" rel="noreferrer">U.S. federal requirements</a>; consult with your airline.</p>
+          <p className="hawaii-covid-site-source border-top">Beginning March 26, 2022, there will be no COVID-related requirements for arriving domestic passengers. Travelers arriving in Hawaii directly from international airports must still comply with <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/international-travel/index.html" target="_blank" rel="noreferrer">U.S. federal requirements</a>; please consult with your airline.</p>
           <ul>
             <li>The federal mask mandate has ended on April 18, and masks are no longer required in airports. Many airlines have also relaxed their mask rules and it&apos;s now optional to wear on a plane.</li>
             <li>Hawaii&apos;s indoor mask mandate ended on March 25, 2022. Masks are still strongly recommended for people over age 65, those with compromised immune systems or who care for people at risk of severe illness, and those unvaccinated for COVID-19.</li>

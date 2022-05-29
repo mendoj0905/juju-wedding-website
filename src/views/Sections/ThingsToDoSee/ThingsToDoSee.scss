@@ -15,4 +15,10 @@
     font-weight: 900;
     @include heading-font;
   }
+
+  h4 {
+    margin: 1rem 0 0.5rem;
+    font-size: 40px;
+    @include gv-font
+  }
 }

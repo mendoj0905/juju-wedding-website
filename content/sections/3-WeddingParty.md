@@ -96,7 +96,7 @@ kids: [
     subheader: "Flower Girl"
   },
   {
-    imageFileName: "weddingparty/michaela.jpg",
+    imageFileName: "weddingparty/michaela1.jpg",
     header: "Michaela",
     subheader: "Flower Girl"
   },

@@ -15,9 +15,17 @@
     @include gv-font;
   }
 
+  .booking-btn {
+    margin: 0 auto 1rem;
+  }
+
   .itinerary-btn {
     margin: 0 0 2.5rem;
     width: 300px;
+  }
+
+  .hawaii-covid-site-source {
+    padding-top: 20px;
   }
 
 }
