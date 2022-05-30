@@ -9,16 +9,16 @@ faq: [
   },
   { 
     question: 'Do you have a wedding hashtag?',
-    answer: 'To be determinted'
+    answer: 'To be determined'
     # answer: 'Our hashtag is (Insert # here). Please use our hashtag and/or tag us in any photos that you post the day of so that we can all look back at the fun later!'
   },
   { 
     question: 'What airport should I fly into?',
-    answer: 'Please fly into Daniel K. Inouye Internation Airport (HNL), located in Honolulu, Hawaii on the island of Oahu.'
+    answer: 'Please fly into Daniel K. Inouye International Airport (HNL), located in Honolulu, Hawaii on the island of Oahu.'
   },
   { 
     question: 'Do you have a wedding room block?',
-    answer: 'Yes, a block of rooms is available at the Courtyard by Marriott Oahu North Shore. Please see the Travel tab. (Make "Travel" a hyperlink)'
+    answer: 'Yes, a block of rooms is available at the Courtyard by Marriott Oahu North Shore. Please see the Travel tab.'
   },
   { 
     question: 'What time does the ceremony start?',
@@ -73,12 +73,12 @@ faq: [
     answer: 'Yes, free parking is available at Paliku Gardens.'
   },
   {
-    question: 'What if I have any additional questions/concerns not listed above?',
-    answer: 'Please contact us at juju.mendoza22@gmail.com for any additional questions/concerns.'
-  },
-  {
     question: 'Is there a color palette/dress code?',
     answer: 'To be determined.'
+  },
+  {
+    question: 'What if I have any additional questions/concerns not listed above?',
+    answer: 'Please contact us at juju.mendoza22@gmail.com for any additional questions/concerns.'
   },
   # {
   #   question: "Do you have a wedding registry?",

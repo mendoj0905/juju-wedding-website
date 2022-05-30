@@ -7,7 +7,7 @@ timeline: [
     imageFileName: "photos/00-photo.jpg",
     header: "February 2017",
     subheader: "How We Began",
-    content: 'We were introduced by our mutual friend, Rachel, through a staged "girl&apos;s night" in Jersey City. After dancing the night away at Porta, we had a game night the following day with who was to become our SoChill Crew. A week later, we went on our first date in New York City that lasted the whole day - from starting at The Oculus at World Trade Center, eating at Sugar Factory, walking the High Line, strolling through Central Park, visiting both MOMA and The MET, and eating in K-Town.'
+    content: "We were introduced by our mutual friend, Rachel, through a staged girl's night in Jersey City. After dancing the night away at Porta, we had a game night the following day with who was to become our SoChill Crew. A week later, we went on our first date in New York City that lasted the whole day - from starting at The Oculus at World Trade Center, eating at Sugar Factory, walking the High Line, strolling through Central Park, visiting both MOMA and The MET, and eating in K-Town."
   },
   {
     imageFileName: "story/02-engagement.jpg",
