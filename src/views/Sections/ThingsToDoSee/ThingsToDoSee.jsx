@@ -24,7 +24,7 @@ const ThingsToDoSee = ({ className, frontmatter }) => {
         <SectionHeader header={rootHeader} subheader={rootSubHeader} />
       </Row>
       <Row>
-        <p className="text-center">Feel free to checkout our Google Sheets with some of our reccommended places. We have a lot of food places!</p>
+        <p className="text-center">Feel free to checkout our Google Sheets with some of our recommended places. We have a lot of food places!</p>
 
         <Button href="https://docs.google.com/spreadsheets/d/1rso2PQwa2lp90TPODRgjnVN30RDgfTOtYQ0FDEMJMZE/edit?usp=sharing" target="_blank" className="things-to-do-btn">See List (Google Sheets)</Button>
 
