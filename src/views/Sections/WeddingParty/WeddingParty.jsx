@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 
 import { Row, Col } from "react-bootstrap";
-import TeamMember from "components/TeamMember";
+import WeddingMember from "components/WeddingMember";
 import SectionHeader from "components/SectionHeader";
 import PageSection from "components/PageSection";
 import "./WeddingParty.scss";
@@ -17,18 +18,50 @@ const WeddingParty = ({ className, frontmatter }) => {
     header: rootHeader,
     subheader: rootSubHeader,
     content: rootContent,
-    teamMember,
+    parents,
+    bridesmaids,
+    groomsmen,
+    kids,
+    sponsors,
   } = frontmatter;
 
   return (
-    <PageSection className={className} id={anchor}>
+    <PageSection className={clsx("wedding-party-section", className)} id={anchor}>
       <Row>
         <SectionHeader header={rootHeader} subheader={rootSubHeader} />
       </Row>
-      <Row>
-        {teamMember.map(({ header, ...tmProps }) => (
-          <Col sm={4} key={header}>
-            <TeamMember header={header} {...tmProps} />
+      <Row className="border-bottom">
+        {parents.map(({ header, ...tmProps }) => (
+          <Col sm={4} key={header} className="mx-auto">
+            <WeddingMember header={header} {...tmProps} />
+          </Col>
+        ))}
+      </Row>
+      <Row className="border-bottom wp-margin-top">
+        {bridesmaids.map(({ header, ...tmProps }) => (
+          <Col sm={4} key={header} className="mx-auto">
+            <WeddingMember header={header} {...tmProps} />
+          </Col>
+        ))}
+      </Row>
+      <Row className="border-bottom wp-margin-top">
+        {groomsmen.map(({ header, ...tmProps }) => (
+          <Col sm={4} key={header} className="mx-auto">
+            <WeddingMember header={header} {...tmProps} />
+          </Col>
+        ))}
+      </Row>
+      <Row className="border-bottom wp-margin-top">
+        {kids.map(({ header, ...tmProps }) => (
+          <Col sm={4} key={header} className="mx-auto">
+            <WeddingMember header={header} {...tmProps} />
+          </Col>
+        ))}
+      </Row>
+      <Row className="wp-margin-top">
+        {sponsors.map(({ header, ...tmProps }) => (
+          <Col sm={4} key={header} className="mx-auto">
+            <WeddingMember header={header} {...tmProps} />
           </Col>
         ))}
       </Row>

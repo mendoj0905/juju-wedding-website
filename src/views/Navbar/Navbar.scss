@@ -1,6 +1,8 @@
 // Styling for the navbar
 .navbar-root {
-  background-color: #d1c6cf;;
+  background-color: #d1c6cf;
+  ;
+
   .navbar-toggler {
     font-size: 12px;
     right: 0;
@@ -11,9 +13,12 @@
     background-color: $primary;
     @include heading-font;
   }
+
   .navbar-brand {
-    color: $primary !important;
+    color: $primary  !important;
+    font-weight: 800;
     @include gv-font;
+
     &.active,
     &:active,
     &:focus,
@@ -22,6 +27,7 @@
     }
   }
 }
+
 @media (min-width: 992px) {
   .navbar-root {
     padding-top: 25px;
@@ -32,17 +38,20 @@
     border: none;
     // background-color: transparent;
     background-color: #d1c6cf;
+
     .navbar-brand {
       font-size: 1.75em;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
     }
+
     &.navbar-shrink {
       padding-top: 0;
       padding-bottom: 0;
       // background-color: $gray-900;
       background-color: #d1c6cf;
+
       .navbar-brand {
         font-size: 1.25em;
         padding: 12px 0;

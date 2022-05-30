@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juju-wedding-website-dpeloyment
+  namespace: juju-wedding
+  labels:
+    app: gatsby-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gatsby-app
+  template:
+    metadata:
+      labels:
+        app: gatsby-app
+    spec:
+      containers:
+        - image: registry.justinmendoza.net/juju-wedding-website:2022.8-dev
+          # - image: jujubeee314/juju-wedding-website:2022.7-dev
+          name: juju-wedding-website
+          resources:
+          imagePullPolicy: Always
+          # livenessProbe:
+          #   httpGet:
+          #     path: /_status/healthz
+          #     port: 5000
+          #   initialDelaySeconds: 90
+          #   timeoutSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /_status/healthz
+          #     port: 5000
+          #   initialDelaySeconds: 30
+          # timeoutSeconds: 10
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: regcred

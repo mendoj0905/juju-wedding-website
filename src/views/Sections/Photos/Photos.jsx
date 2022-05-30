@@ -22,7 +22,7 @@ const Photos = ({ className, frontmatter }) => {
       </Row>
       <Row>
         {portfolios.map(
-          ({ content, extraInfo, header, imageFileName, imageFileNameDetail, subheader }) => (
+          ({ content, header, imageFileName, imageFileNameDetail, subheader }) => (
             <PhotoItem
               key={header}
               imageFileName={imageFileName}
@@ -30,13 +30,6 @@ const Photos = ({ className, frontmatter }) => {
               subheader={subheader}
               content={content}
               imageFileNameDetail={imageFileNameDetail}
-              extraInfo={
-                <ul>
-                  {extraInfo.map((ei) => (
-                    <li key={ei}>{ei}</li>
-                  ))}
-                </ul>
-              }
             />
           ),
         )}

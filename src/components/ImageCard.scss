@@ -1,5 +1,8 @@
 .image-card {
   height: 491px;
+  .rsvp-dialog {
+    background-color: #f3f2f2;
+  }
   .image {
     height: 491px;
   }
@@ -17,32 +20,37 @@
       font-size: 50px;
       font-weight: 700;
       line-height: 50px;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       @include gv-font;
     }
     .intro-lead-in {
       font-size: 22px;
       // font-style: italic;
       line-height: 22px;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       @include heading-font;
+    }
+    .wedding-address {
+      margin-bottom: 15px;
     }
   }
 }
 @media (min-width: 768px) {
   .image-card {
     height: auto;
-    // width: 3500px;
     margin: auto;
     .image {
       height: auto;
     }
     .img-bg {
       opacity: 0.6;
-      background-color: #ffffff;
+      background-color: $white;
     }
     .intro-text {
-      padding-top: 500px;
+      padding-top: 400px;
+      @media (min-width: 1980px) {
+        padding-top: 700px;
+      }
       padding-bottom: 200px;
       .intro-heading {
         font-size: 65px;

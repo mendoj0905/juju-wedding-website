@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const Image = ({ fileName, alt, ...restProps }) => (
+const Image = ({ fileName, alt, crop, ...restProps }) => (
   <StaticQuery
     query={graphql`
       query BaseImageQuery {
@@ -14,7 +14,14 @@ const Image = ({ fileName, alt, ...restProps }) => (
               relativePath
               name
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED)
+                gatsbyImageData(
+                  layout: FULL_WIDTH
+                  placeholder: DOMINANT_COLOR
+                  transformOptions: {
+                    cropFocus: ATTENTION
+                    fit: OUTSIDE
+                  }
+                )
               }
             }
           }
@@ -28,6 +35,10 @@ const Image = ({ fileName, alt, ...restProps }) => (
         return null;
       }
       const imageData = image.node.childImageSharp.gatsbyImageData;
+      // if (crop === 'NORTH') {
+      //   console.log(imageData)
+      //   imageData.gatsbyImageData.transformOptions.cropFocus = 'NORTH'
+      // }
       return <GatsbyImage alt={alt} image={imageData} {...restProps} />;
     }}
   />
@@ -36,10 +47,12 @@ const Image = ({ fileName, alt, ...restProps }) => (
 Image.propTypes = {
   fileName: PropTypes.string.isRequired,
   alt: PropTypes.string,
+  crop: PropTypes.string,
 };
 
 Image.defaultProps = {
   alt: null,
+  crop: 'CENTER'
 };
 
 export default Image;

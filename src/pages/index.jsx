@@ -51,7 +51,6 @@ export const query = graphql`
           menuText
           portfolios {
             content
-            extraInfo
             header
             subheader
             imageFileNameDetail
@@ -59,13 +58,6 @@ export const query = graphql`
           }
           privacyHref
           privacyText
-          services {
-            content
-            header
-            subheader
-            iconName
-            imageFileName
-          }
           social {
             facebook
             github
@@ -74,16 +66,29 @@ export const query = graphql`
             twitter
           }
           subheader
-          teamMember {
+          parents {
             header
             imageFileName
-            social {
-              facebook
-              github
-              linkedin
-              medium
-              twitter
-            }
+            subheader
+          }
+          bridesmaids {
+            header
+            imageFileName
+            subheader
+          }
+          groomsmen {
+            header
+            imageFileName
+            subheader
+          }
+          kids {
+            header
+            imageFileName
+            subheader
+          }
+          sponsors {
+            header
+            imageFileName
             subheader
           }
           telephone
@@ -95,6 +100,11 @@ export const query = graphql`
             imageContent
             imageFileName
             subheader
+            content
+          }
+          faq {
+            question
+            answer
           }
         }
         fields {
@@ -127,7 +137,7 @@ const IndexPage = ({ data }) => {
     } else {
       setWrongPassword(true);
     }
-  }, [ password ]);
+  }, [password]);
 
 
   return (
@@ -154,7 +164,7 @@ const IndexPage = ({ data }) => {
         })
       }
       <Footer frontmatter={footerNode.frontmatter} />
-      {!getSessionPassword() && <Password show={showPassword} onHide={handleHidePassword} isWrongPassword={wrongPassword} setPassword={setPassword}/>}
+      {!getSessionPassword() && <Password show={showPassword} onHide={handleHidePassword} isWrongPassword={wrongPassword} setPassword={setPassword} />}
     </>
   );
 };

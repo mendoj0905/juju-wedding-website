@@ -25,7 +25,7 @@ const TimelineItem = ({
       <div className="timeline-image">
         {imageContent || (
           <Image
-            className="rounded-circle img-fluid"
+            className="img-height rounded-circle img-fluid"
             fileName={imageFileName}
             alt={imageAlt || header || subheader}
           />
