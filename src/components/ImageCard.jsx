@@ -6,6 +6,7 @@ import { Container, Card, Button } from "react-bootstrap";
 import Image from "components/Image";
 import "./ImageCard.scss";
 import RsvpDialog from "components/RsvpDialog";
+import CountdownTimer from "components/CountdownTimer";
 
 const ImageCard = ({
   className,
@@ -25,6 +26,9 @@ const ImageCard = ({
   const handleOpenRsvp = useCallback(() => {
     setOpenRsvp(true);
   }, []);
+
+  const weddingDate = 'October 25, 2022 00:00:00'
+  // const weddingDate = Date.now()
 
   return (
     <Card className={clsx("image-card bg-dark text-white text-center", className)}>
@@ -49,6 +53,7 @@ const ImageCard = ({
         <Container>
           <div className="intro-text">
             <div className="intro-heading">{header}</div>
+            <CountdownTimer targetDate={weddingDate} />
             <div className="intro-lead-in">{subheader}</div>
             <div className="wedding-location">Paliku Gardens</div>
             <div className="wedding-address">Kualoa Ranch, Kaneohe, HI 96744</div>
