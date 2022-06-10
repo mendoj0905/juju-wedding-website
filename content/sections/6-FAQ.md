@@ -8,7 +8,6 @@ faq: [
     answer: 'Please reply on the RSVP page by August 25, 2022. If you have any questions or issues, feel free to email us at juju.mendoza22@gmail.com.'
   },
   { 
-    question: 'Do you have a wedding hashtag?',
     answer: 'To be determined'
     # answer: 'Our hashtag is (Insert # here). Please use our hashtag and/or tag us in any photos that you post the day of so that we can all look back at the fun later!'
   },
