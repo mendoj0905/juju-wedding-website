@@ -1,0 +1,23 @@
+.countdown {
+  width: 400px;
+
+  .countdown-label {
+    width: 85px;
+    background-color: $primary;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15%;
+
+    h4, p {
+      margin: 0;
+    }
+
+  }
+
+}
+
+@media (max-width: 500px) {
+  .countdown{
+    width: 200px;
+  }
+}

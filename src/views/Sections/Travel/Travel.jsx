@@ -57,7 +57,8 @@ const Travel = ({ className, frontmatter }) => {
 
           <p><span className="hotel-important">NOTE:</span> If you would like to extend your stay at the Courtyard, please book through the link first and then contact the hotel to extend.</p>
 
-          <p>Transportation will be provided to and from the hotel and our wedding venue. Schedule will be posted soon.</p>
+          <p>On the day of the wedding, transportation will be provided to and from the Courtyard and our wedding venue. Schedule will be posted soon.</p>
+
         </Col>
       </Row>
       <Row>
