@@ -55,8 +55,11 @@ const ImageCard = ({
             <div className="intro-heading">{header}</div>
             <CountdownTimer targetDate={weddingDate} />
             <div className="intro-lead-in">{subheader}</div>
-            <div className="wedding-location">Paliku Gardens</div>
-            <div className="wedding-address">Kualoa Ranch, Kaneohe, HI 96744</div>
+            {/* <div className="wedding-location"></div> */}
+            <div className="wedding-address">
+              <p>Paliku Gardens</p>
+              <p>Kualoa Ranch, Kaneohe, HI 96744</p>
+            </div>
             <Button
               className="rsvp-button"
               onClick={handleOpenRsvp}>RSVP</Button>
