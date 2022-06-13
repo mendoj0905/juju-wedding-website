@@ -11,7 +11,7 @@ const GuestItem = ({
   const guestApi = new GuestApi()
   const { name } = guestMem;
   const [isAttending, setAttending] = useState(async () => {
-    const guest = await guestApi.search(name);
+    const guest = await guestApi.get(name);
     if (guest.isAttending) {
       setAttending("yes");
     } else {

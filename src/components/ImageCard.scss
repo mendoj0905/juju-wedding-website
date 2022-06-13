@@ -14,10 +14,10 @@
     padding: 0;
   }
   .intro-text {
-    padding-top: 150px;
+    padding-top: 170px;
     padding-bottom: 100px;
     .intro-heading {
-      font-size: 50px;
+      font-size: 1.5em;
       font-weight: 700;
       line-height: 50px;
       margin-bottom: 15px;
@@ -25,7 +25,6 @@
     }
     .intro-lead-in {
       font-size: 22px;
-      // font-style: italic;
       line-height: 22px;
       margin-bottom: 15px;
       @include heading-font;
@@ -47,36 +46,38 @@
       background-color: $white;
     }
     .intro-text {
-      padding-top: 400px;
+      padding-top: 25%;
       @media (min-width: 1980px) {
         padding-top: 700px;
       }
       padding-bottom: 200px;
       .intro-heading {
-        font-size: 65px;
+        font-size: 4em;
         font-weight: 1000;
         line-height: 75px;
-        margin-bottom: 55px;
-        // display: none;
+        margin-bottom: 3%;
         @include gv-font;
       }
       .intro-lead-in {
-        font-size: 40px;
+        font-size: 2em;
         line-height: 40px;
-        margin-bottom: 35px;
+        margin-bottom: 1.5%;
         @include heading-font;
       }
-      .wedding-location {
-        font-size: 35px;
-        line-height: 75px;
-        @include heading-font;
-      }
+      // .wedding-location {
+      //   font-size: 1.5em;
+      //   line-height: 20%;
+      //   @include heading-font;
+      // }
       .wedding-address {
-        font-size: 35px;
+        font-size: 1.5em;
         font-weight: 500;
-        line-height: 75px;
+        // line-height: 75px;
         margin-bottom: 25px;
-        @include heading-font;
+        // @include heading-font;
+        p {
+          margin-bottom: 0;
+        }
 
       }
       .rsvp-button {

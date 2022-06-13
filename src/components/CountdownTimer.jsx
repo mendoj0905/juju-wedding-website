@@ -37,7 +37,7 @@ const CountdownTimer = ({ targetDate }) => {
   } 
 
   return (
-    <Row xs={2} sm={4} lg={4} className='countdown mx-auto'>
+    <Row xs={4} className='countdown mx-auto'>
       {
         [days, hours, minutes, seconds ].map( (time, index) => CountdownNumber(time, timeLabels[index]))
       }
