@@ -5,6 +5,7 @@ const RSVP = 'rsvp';
 
 class GuestApi {
   constructor() {
+    // this.baseUrl = 'http://localhost:4000';
     this.baseUrl = 'https://api.wedding.justinmendoza.net';
     this.guestPathApi = '/api/guests';
     this.photoPathApi = '/api/photos';
@@ -12,17 +13,30 @@ class GuestApi {
     this.photoApi = this.baseUrl + this.photoPathApi;
   }
 
-  async search(name) {
+  async get(name) {
     const response = await axios.post(`${this.guestApi}/search`, { name });
 
     if (response.data.success === false) {
       return false;
     }
 
-    const { isAttending, email, familyMembers, children, plusOne, childrenAttending } = response.data;
-
-    const guest = new Guest(name, isAttending, email, familyMembers, children, plusOne, childrenAttending);
+    const guest = new Guest(response.data);
     return guest;
+  }
+
+  async v2Search(name) {
+    const response = await axios.post(`${this.guestApi}/v2/search`, { name });
+
+    if (response.data.success === false) {
+      return false
+    }
+
+    if (response.data.length === 1) {
+      const guest = new Guest(response.data[0])
+      return guest
+    }
+
+    return response.data
   }
 
   async updateAttending(name, isAttending) {
