@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
-import { Modal } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 
 import RsvpResults from "./RsvpResults";
 import SearchRsvpForm from "./SearchRsvpForm";
@@ -24,24 +24,47 @@ const RsvpDialog = ({
   const guestApi = useMemo(() => new GuestApi(), []);
   const [email, setEmail] = useState('');
   const [plusOneGuest, setPlusOneGuest] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const familyMembers = useRef(null);
+
+  const getGuest = useCallback(selectedGuestData => {
+
+    setSearchResults([])
+
+    if (selectedGuestData) {
+      familyMembers.current = selectedGuestData.familyMembers;
+      setGuestMembers(selectedGuestData.familyMembers);
+      setGuest(selectedGuestData);
+      setEmail(selectedGuestData.email);
+    }
+
+  },[familyMembers, setGuestMembers, setGuest, setEmail])
+
+  const setSelectedGuest = useCallback(async e => {
+    e.preventDefault()
+    const g = await guestApi.get(e.target.innerText)
+    getGuest(g)
+  }, [guestApi, getGuest])
 
   const searchRsvp = useCallback(async e => {
 
     e.preventDefault();
-    const guestData = await guestApi.search(guestName)
+    const searchData = await guestApi.v2Search(guestName.replace(/\s+/g, ' ').trim())
 
-    if (!guestData) {
+    if (!searchData) {
       foundUser(true);
+      setSearchResults([])
     }
 
-    if (guestData) {
-      familyMembers.current = guestData.familyMembers;
-      setGuestMembers(guestData.familyMembers);
-      setGuest(guestData);
-      setEmail(guestData.email);
+    if(searchData.length > 1) {
+      setSearchResults(searchData)
     }
-  }, [guestName, setGuestMembers, foundUser, setGuest, guestApi]);
+
+    if (typeof searchData === 'object' && !Array.isArray(searchData)) {
+      getGuest(searchData)
+    }
+
+  }, [guestName, foundUser, guestApi, getGuest]);
 
   const clearRsvpModalData = useCallback(() => {
     setEmail('');
@@ -51,6 +74,7 @@ const RsvpDialog = ({
     setGuest({})
     foundUser(false);
     setOpenRsvp(false);
+    setSearchResults([])
   }, [setEmail, setPlusOneGuest, setGuestMembers, setGuestName, foundUser, setOpenRsvp, setGuest])
 
   const submitGuest = useCallback(async e => {
@@ -90,6 +114,19 @@ const RsvpDialog = ({
             setGuestName={setGuestName}
             noUserFound={noUserFound}
           />
+        }
+        {
+          searchResults.length > 1 && <div>
+            <ul>
+              {
+                searchResults.map( g => {
+                  return <li key={g._id}>
+                    <Button variant="link" onClick={setSelectedGuest}>{g.name}</Button>
+                  </li>
+                })
+              }
+            </ul>
+          </div>
         }
         {
           guestMembers.length > 0 &&
