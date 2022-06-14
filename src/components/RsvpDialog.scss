@@ -1,7 +1,12 @@
 .rsvp-modal {
-  // background-color: white;
   h1 {
     @include gv-font
+  }
+  .rsvp-back {
+    margin: 0 20px;
+    .rsvp-back-button {
+      
+    }
   }
 }
 
@@ -12,3 +17,17 @@
     }
   }
 }
+
+// @media (max-width: 500px) {
+//   .rsvp-modal {
+//     border: 0 !important;
+//     border-radius: 0% !important;
+//     margin: 0 !important;
+//     width: 100VW;
+//     height: 100VH;
+
+//     h1 {
+//       @include gv-font
+//     }
+//   }
+// }
