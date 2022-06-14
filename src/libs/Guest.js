@@ -1,6 +1,7 @@
 class Guest {
 
-  constructor(name, isAttending, email, familyMembers, children, plusOne, childrenAttending) {
+  constructor(guestProps) {
+    const { name, isAttending, email, familyMembers, children, plusOne, childrenAttending } = guestProps;
     this.name = name;
     this.isAttending = isAttending;
     this.email = email;
