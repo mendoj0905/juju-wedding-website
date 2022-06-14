@@ -51,7 +51,7 @@ const RsvpDialog = ({
     e.preventDefault();
     const searchData = await guestApi.v2Search(guestName.replace(/\s+/g, ' ').trim())
 
-    if (!searchData) {
+    if (!searchData || !searchData.length) {
       foundUser(true);
       setSearchResults([])
     }
@@ -94,6 +94,20 @@ const RsvpDialog = ({
 
   }, [clearRsvpModalData, guestMembers, email, guest, plusOneGuest, guestApi]);
 
+  const backToSearchForm = useCallback(async e => {
+
+    e.preventDefault()
+
+    setEmail('');
+    setPlusOneGuest('');
+    setGuestMembers([]);
+    setGuestName('');
+    setGuest({})
+    foundUser(false);
+    setSearchResults([])
+
+  }, [setEmail, setPlusOneGuest, setGuest, setGuestMembers, setGuestName, foundUser])
+
   return (
     <Modal
       className="rsvp-modal"
@@ -101,10 +115,14 @@ const RsvpDialog = ({
       onHide={clearRsvpModalData}
       size="xl"
       centered
-      fullscreen="true"
     >
       <Modal.Header closeButton>
         <h1>RSVP</h1>
+        {
+           guestMembers.length > 0 && <div>
+            <p className="rsvp-back">Not you? <Button className="rsvp-back-button" variant="link" onClick={backToSearchForm}>Back to Search</Button></p>
+          </div>
+        }
       </Modal.Header>
       <Modal.Body>
         {

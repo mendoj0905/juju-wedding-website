@@ -1,83 +1,106 @@
 .image-card {
   height: 491px;
+
   .rsvp-dialog {
     background-color: #f3f2f2;
   }
+
   .image {
     height: 491px;
   }
+
   .img-bg {
     opacity: 0.7;
     background-color: #f3f2f2;
   }
+
   .no-padding {
     padding: 0;
   }
+
   .intro-text {
-    padding-top: 150px;
+    padding-top: 160px;
     padding-bottom: 100px;
+
     .intro-heading {
-      font-size: 50px;
+      font-size: 1.4em;
       font-weight: 700;
       line-height: 50px;
       margin-bottom: 15px;
       @include gv-font;
     }
+
     .intro-lead-in {
       font-size: 22px;
-      // font-style: italic;
       line-height: 22px;
       margin-bottom: 15px;
       @include heading-font;
     }
+
     .wedding-address {
       margin-bottom: 15px;
+
+      p {
+        margin-bottom: 0;
+      }
     }
   }
 }
+
 @media (min-width: 768px) {
   .image-card {
     height: auto;
     margin: auto;
+
     .image {
       height: auto;
     }
+
     .img-bg {
       opacity: 0.6;
       background-color: $white;
     }
+
     .intro-text {
-      padding-top: 400px;
+      padding-top: 25%;
       @media (min-width: 1980px) {
         padding-top: 700px;
       }
+
       padding-bottom: 200px;
+
       .intro-heading {
-        font-size: 65px;
+        font-size: 4em;
         font-weight: 1000;
         line-height: 75px;
-        margin-bottom: 55px;
+        margin-bottom: 3%;
         @include gv-font;
       }
+
       .intro-lead-in {
-        font-size: 40px;
+        font-size: 2em;
         line-height: 40px;
-        margin-bottom: 35px;
+        margin-bottom: 1.5%;
         @include heading-font;
       }
-      .wedding-location {
-        font-size: 35px;
-        line-height: 75px;
-        @include heading-font;
-      }
+
+      // .wedding-location {
+      //   font-size: 1.5em;
+      //   line-height: 20%;
+      //   @include heading-font;
+      // }
       .wedding-address {
-        font-size: 35px;
+        font-size: 1.5em;
         font-weight: 500;
-        line-height: 75px;
+        // line-height: 75px;
         margin-bottom: 25px;
-        @include heading-font;
+        // @include heading-font;
+        p {
+          margin-bottom: 0;
+        }
 
       }
+
       .rsvp-button {
         font-size: 35px
       }
