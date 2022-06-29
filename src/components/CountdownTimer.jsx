@@ -15,9 +15,9 @@ const ExpiredNotice = () => {
 }
 
 const CountdownNumber = (number, type) => {
-  
+
   return (
-    <Col>
+    <Col key={type}>
       <div className="countdown-label mx-auto">
         <h4>{number}</h4>
         <p>{type}</p>
@@ -27,19 +27,19 @@ const CountdownNumber = (number, type) => {
 }
 
 const CountdownTimer = ({ targetDate }) => {
-  const [days, hours, minutes, seconds ] = useCountdown(targetDate);
-  const timeLabels = [ 'days', 'hours', 'minutes', 'seconds' ]
+  const [days, hours, minutes, seconds] = useCountdown(targetDate);
+  const timeLabels = ['days', 'hours', 'minutes', 'seconds']
 
-  if (days + hours + minutes + seconds <= 0 ) {
+  if (days + hours + minutes + seconds <= 0) {
     return (
       <ExpiredNotice />
     )
-  } 
+  }
 
   return (
     <Row xs={4} className='countdown mx-auto'>
       {
-        [days, hours, minutes, seconds ].map( (time, index) => CountdownNumber(time, timeLabels[index]))
+        [days, hours, minutes, seconds].map((time, index) => CountdownNumber(time, timeLabels[index]))
       }
     </Row>
   )
