@@ -31,6 +31,7 @@ const Travel = ({ className, frontmatter }) => {
         <Col sm={1} md={6}>
           <StaticImage
             className="img-responsive"
+            // src="http://localhost:4000/photos/test.jpg"
             src="../../../../content/assets/images/courtyard-marriot-northshore.png"
             alt="courtyard-marriot-northshore"
             layout="constrained"
