@@ -3,10 +3,10 @@ import Guest from "./Guest";
 
 const RSVP = 'rsvp';
 
-class GuestApi {
+class WeddingApi {
   constructor() {
-    // this.baseUrl = 'http://localhost:4000';
-    this.baseUrl = 'https://api.wedding.justinmendoza.net';
+    this.baseUrl = 'http://localhost:4000';
+    // this.baseUrl = 'https://api.wedding.justinmendoza.net';
     this.guestPathApi = '/api/guests';
     this.photoPathApi = '/api/photos';
     this.guestApi = this.baseUrl + this.guestPathApi;
@@ -67,12 +67,11 @@ class GuestApi {
     });
   }
 
-  async getPhotos(id) {
-    const response = await axios.post(`${this.photoApi}`, { id });
-    const { photos } = response.data;
-    return photos;
+  async getPhotos(wedding) {
+    const response = await axios.get(`${this.photoApi}/${wedding}`);
+    return response.data;
   }
 
 }
 
-export default GuestApi;
+export default WeddingApi;

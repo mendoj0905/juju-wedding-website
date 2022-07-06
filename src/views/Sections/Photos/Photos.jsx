@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
@@ -7,10 +7,16 @@ import { Row } from "react-bootstrap";
 import SectionHeader from "components/SectionHeader";
 import PhotoItemNew from "components/PhotoItemNew";
 import PageSection from "components/PageSection";
-import photos from "./photo-test";
 import "./Photos.scss";
+import WeddingApi from "../../../libs/WeddingApi";
 
 const Photos = ({ className, frontmatter }) => {
+
+  const weddingApi = new WeddingApi();
+  const [ photos, setPhotos ] = useState(async () => {
+    const resp = await weddingApi.getPhotos('juju-wedding') 
+    setPhotos(resp); 
+  })
 
   const imageRenderer = useCallback(
     ({ index, photo }) => (
@@ -18,7 +24,7 @@ const Photos = ({ className, frontmatter }) => {
         index={index}
         photo={photo}
         photos={photos} />
-    ), [])
+    ), [ photos ])
 
   if (!frontmatter) {
     return null;
@@ -32,7 +38,9 @@ const Photos = ({ className, frontmatter }) => {
         <SectionHeader header={rootHeader} subheader={rootSubHeader} />
       </Row>
       <Row>
-        <Gallery photos={photos} direction="row" renderImage={imageRenderer} />
+        { 
+          photos.length > 0 && <Gallery photos={photos} direction="row" renderImage={imageRenderer} /> 
+        }
       </Row>
     </PageSection>
   );
