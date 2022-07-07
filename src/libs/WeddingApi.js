@@ -5,8 +5,8 @@ const RSVP = 'rsvp';
 
 class WeddingApi {
   constructor() {
-    this.baseUrl = 'http://localhost:4000';
-    // this.baseUrl = 'https://api.wedding.justinmendoza.net';
+    // this.baseUrl = 'http://localhost:4000';
+    this.baseUrl = 'https://api.wedding.justinmendoza.net';
     this.guestPathApi = '/api/guests';
     this.photoPathApi = '/api/photos';
     this.guestApi = this.baseUrl + this.guestPathApi;
