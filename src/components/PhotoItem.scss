@@ -1,12 +1,13 @@
 .portfolio-item {
   right: 0;
-  margin: 0 0 15px;
+  margin: 2px;
+
   .portfolio-link {
     position: relative;
     display: block;
-    max-width: 400px;
     margin: 0 auto;
     cursor: pointer;
+
     .portfolio-hover {
       position: absolute;
       top: 0;
@@ -15,11 +16,13 @@
       transition: all ease 0.5s;
       opacity: 0;
       background: fade-out($primary, 0.1);
+
       &:hover {
         opacity: 1;
       }
+
       .portfolio-hover-content {
-        font-size: 20px;
+        font-size: 16px;
         position: absolute;
         top: 50%;
         width: 100%;
@@ -27,9 +30,11 @@
         margin-top: -12px;
         text-align: center;
         color: white;
+
         i {
           margin-top: -12px;
         }
+
         h3,
         h4 {
           margin: 0;
@@ -37,27 +42,24 @@
       }
     }
   }
+
   .portfolio-caption {
     max-width: 400px;
     margin: 0 auto;
     padding: 25px;
     text-align: center;
     background-color: $white;
+
     h4 {
       margin: 0;
       text-transform: none;
     }
+
     p {
       font-size: 16px;
       font-style: italic;
       margin: 0;
       @include serif-font;
     }
-  }
-}
-
-@media (min-width: 767px) {
-  .portfolio-item {
-    margin: 0 0 30px;
   }
 }

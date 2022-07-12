@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useCallback, useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
+import Gallery from 'react-photo-gallery';
 import { Row } from "react-bootstrap";
 import SectionHeader from "components/SectionHeader";
-import PhotoItem from "components/PhotoItem";
+import PhotoItemNew from "components/PhotoItemNew";
 import PageSection from "components/PageSection";
 import "./Photos.scss";
+import WeddingApi from "../../../libs/WeddingApi";
 
 const Photos = ({ className, frontmatter }) => {
+
+  const weddingApi = new WeddingApi();
+  const [ photos, setPhotos ] = useState(async () => {
+    const resp = await weddingApi.getPhotos('juju-wedding') 
+    setPhotos(resp); 
+  })
+
+  const imageRenderer = useCallback(
+    ({ index, photo }) => (
+      <PhotoItemNew
+        index={index}
+        photo={photo}
+        photos={photos} />
+    ), [ photos ])
+
   if (!frontmatter) {
     return null;
   }
 
-  const { anchor, header: rootHeader, subheader: rootSubHeader, portfolios } = frontmatter;
+  const { anchor, header: rootHeader, subheader: rootSubHeader } = frontmatter;
 
   return (
     <PageSection className={clsx("portfolio-section", className)} id={anchor}>
@@ -21,18 +38,9 @@ const Photos = ({ className, frontmatter }) => {
         <SectionHeader header={rootHeader} subheader={rootSubHeader} />
       </Row>
       <Row>
-        {portfolios.map(
-          ({ content, header, imageFileName, imageFileNameDetail, subheader }) => (
-            <PhotoItem
-              key={header}
-              imageFileName={imageFileName}
-              header={header}
-              subheader={subheader}
-              content={content}
-              imageFileNameDetail={imageFileNameDetail}
-            />
-          ),
-        )}
+        { 
+          photos.length > 0 && <Gallery photos={photos} direction="row" renderImage={imageRenderer} /> 
+        }
       </Row>
     </PageSection>
   );

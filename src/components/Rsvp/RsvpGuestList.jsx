@@ -2,16 +2,16 @@ import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-bootstrap"
 
-import GuestApi from "../../libs/GuestApi";
+import WeddingApi from "../../libs/WeddingApi";
 
 const GuestItem = ({
   guestMem,
   index,
 }) => {
-  const guestApi = new GuestApi()
+  const weddingApi = new WeddingApi()
   const { name } = guestMem;
   const [isAttending, setAttending] = useState(async () => {
-    const guest = await guestApi.get(name);
+    const guest = await weddingApi.get(name);
     if (guest.isAttending) {
       setAttending("yes");
     } else {

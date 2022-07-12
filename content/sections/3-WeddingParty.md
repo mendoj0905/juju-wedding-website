@@ -117,21 +117,21 @@ sponsors: [
     header: "Arnel",
     subheader: "Primary Sponsor"
   },
-  {
-    imageFileName: "weddingparty/placeholder.jpg",
-    header: "TBD",
-    subheader: "Primary Sponsor"
-  },
+  # {
+  #   imageFileName: "weddingparty/placeholder.jpg",
+  #   header: "TBD",
+  #   subheader: "Primary Sponsor"
+  # },
   {
     imageFileName: "weddingparty/jennymarc.jpg",
     header: "Jenny & Marc",
     subheader: "Secondary Sponsor - Cord"
   },
-  {
-    imageFileName: "weddingparty/placeholder.jpg",
-    header: "TBD",
-    subheader: "Secondary Sponsor - Veil"
-  },
+  # {
+  #   imageFileName: "weddingparty/placeholder.jpg",
+  #   header: "TBD",
+  #   subheader: "Secondary Sponsor - Veil"
+  # },
 ]
   # {
   #   imageFileName: "team/3.jpg",

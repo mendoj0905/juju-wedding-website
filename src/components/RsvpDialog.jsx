@@ -4,7 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 
 import RsvpResults from "./RsvpResults";
 import SearchRsvpForm from "./SearchRsvpForm";
-import GuestApi from "../libs/GuestApi";
+import WeddingApi from "../libs/WeddingApi";
 import "./RsvpDialog.scss";
 
 const RsvpDialog = ({
@@ -21,7 +21,7 @@ const RsvpDialog = ({
   ...restProps
 }) => {
 
-  const guestApi = useMemo(() => new GuestApi(), []);
+  const weddingApi = useMemo(() => new WeddingApi(), []);
   const [email, setEmail] = useState('');
   const [plusOneGuest, setPlusOneGuest] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -42,14 +42,14 @@ const RsvpDialog = ({
 
   const setSelectedGuest = useCallback(async e => {
     e.preventDefault()
-    const g = await guestApi.get(e.target.innerText)
+    const g = await weddingApi.get(e.target.innerText)
     getGuest(g)
-  }, [guestApi, getGuest])
+  }, [weddingApi, getGuest])
 
   const searchRsvp = useCallback(async e => {
 
     e.preventDefault();
-    const searchData = await guestApi.v2Search(guestName.replace(/\s+/g, ' ').trim())
+    const searchData = await weddingApi.v2Search(guestName.replace(/\s+/g, ' ').trim())
 
     if (!searchData || !searchData.length) {
       foundUser(true);
@@ -64,7 +64,7 @@ const RsvpDialog = ({
       getGuest(searchData)
     }
 
-  }, [guestName, foundUser, guestApi, getGuest]);
+  }, [guestName, foundUser, weddingApi, getGuest]);
 
   const clearRsvpModalData = useCallback(() => {
     setEmail('');
@@ -80,19 +80,19 @@ const RsvpDialog = ({
   const submitGuest = useCallback(async e => {
     e.preventDefault();
     if (email) {
-      await guestApi.updateEmail(guest.name, email);
+      await weddingApi.updateEmail(guest.name, email);
     }
     if (plusOneGuest) {
-      await guestApi.updatePlusOne(plusOneGuest, familyMembers.current[0].name);
+      await weddingApi.updatePlusOne(plusOneGuest, familyMembers.current[0].name);
     }
     if (guest.children) {
-      await guestApi.updateKids(guestMembers, guest.children);
+      await weddingApi.updateKids(guestMembers, guest.children);
     }
-    await guestApi.updateMembers(guestMembers);
+    await weddingApi.updateMembers(guestMembers);
 
     clearRsvpModalData()
 
-  }, [clearRsvpModalData, guestMembers, email, guest, plusOneGuest, guestApi]);
+  }, [clearRsvpModalData, guestMembers, email, guest, plusOneGuest, weddingApi]);
 
   const backToSearchForm = useCallback(async e => {
 
