@@ -6,6 +6,8 @@ import {
   Carousel
 } from "react-bootstrap";
 
+import './PhotoDialog.scss'
+
 const PhotoDialog = ({
   onHide,
   index,
@@ -18,7 +20,7 @@ const PhotoDialog = ({
     return index
   })
 
-  const handleSelect = (selectedIndex, e) => {
+  const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
   }
 
@@ -41,8 +43,8 @@ const PhotoDialog = ({
               <Carousel.Item key={p.subheader}>
                 <img
                   alt={p.subheader}
-                  src={p.src}
-                  width="100%"
+                  src={p.srcOrginal}
+                  className="image-carousel"
                 />
               </Carousel.Item>
             )

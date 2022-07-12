@@ -17,8 +17,8 @@ spec:
         app: gatsby-app
     spec:
       containers:
-        - image: registry.justinmendoza.net/juju-wedding-website:2022.8-dev
-          # - image: jujubeee314/juju-wedding-website:2022.7-dev
+        # - image: registry.justinmendoza.net/juju-wedding-website:2022.8-dev
+        - image: jujubeee314/juju-wedding-website:2022.11-dev
           name: juju-wedding-website
           resources:
           imagePullPolicy: Always
