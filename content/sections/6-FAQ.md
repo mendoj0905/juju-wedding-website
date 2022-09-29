@@ -58,7 +58,7 @@ faq: [
   },
   { 
     question: 'Are there any COVID-19 protocols in place?',
-    answer: "Please see the Covid-19/Concerns sub section in the Travel tab."
+    answer: 'Please see the Covid-19/Concerns sub section in the Travel tab.'
   },
   { 
     question: 'Is there a shared digital photo album where I can upload photos?',
@@ -74,7 +74,7 @@ faq: [
   },
   {
     question: 'Is there a color palette/dress code?',
-    answer: 'To be determined.'
+    answer: 'Dress code is tropical cocktail attire. Our venue is grassy/hilly so comfortable footwear is recommended. Please see our Pinterest board for some outfit ideas <a href="https://pin.it/30T4rLD" target="_blank">https://pin.it/30T4rLD</a>'
   },
   {
     question: 'What if I have any additional questions/concerns not listed above?',

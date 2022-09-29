@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useMemo } from "react";
+import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
@@ -21,6 +21,7 @@ const Photos = ({ className, frontmatter }) => {
   const imageRenderer = useCallback(
     ({ index, photo }) => (
       <PhotoItemNew
+        key={ Math.floor(Math.random() * 4269 ).toString() + Math.floor(Math.random() * 334 ).toString()  }
         index={index}
         photo={photo}
         photos={photos} />

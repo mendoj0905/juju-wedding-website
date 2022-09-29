@@ -40,7 +40,7 @@ const PhotoDialog = ({
         {
           photos.map((p) => {
             return (
-              <Carousel.Item key={p.subheader}>
+              <Carousel.Item key={ Math.floor(Math.random() * 3269 ).toString() + Math.floor(Math.random() * 5134 ).toString() }>
                 <img
                   alt={p.subheader}
                   src={p.srcOrginal}

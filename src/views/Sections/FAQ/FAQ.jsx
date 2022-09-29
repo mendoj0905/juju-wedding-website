@@ -25,12 +25,15 @@ const Faq = ({ className, frontmatter }) => {
         <SectionHeader header={rootHeader} subheader={rootSubHeader} />
       </Row>
       <Row>
-        {faq.map(({ question, answer }) => (
-          <div key={question}>
-            <h4 className="faq-question">{question}</h4>
-            <p className="faq-answer">{answer}</p>
-          </div>
-        ))}
+        {
+          faq.map(({ question, answer }) => (
+            <div key={question}>
+              <h4 className="faq-question">{question}</h4>
+              <div dangerouslySetInnerHTML={{ __html: `<p className="faq-answer">${answer}</p>` }} />
+            </div>
+            )
+          )
+        }
       </Row>
     </PageSection>
   );

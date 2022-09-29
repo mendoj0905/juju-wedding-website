@@ -16,10 +16,14 @@ const PhotoItemNew = ({
   const handleHideDetail = React.useCallback(() => {
     setShowDetail(false);
   }, []);
+  
+  if (photo.srcOrginal) {
+    delete photo.srcOrginal
+  }
 
   return (
     <>
-      <div className="portfolio-item" key={photo.subheader}>
+      <div className="portfolio-item">
         <a
           role="button"
           tabIndex={-1}

@@ -105,42 +105,42 @@ kids: [
     header: "Mason",
     subheader: "Ring Bearer"
   },
-  {
-    imageFileName: "weddingparty/placeholder.jpg",
-    header: "TBD",
-    subheader: "Coin Bearer"
-  },
 ]
 sponsors: [
+  {
+    imageFileName: "weddingparty/cely.jpg",
+    header: "Cely",
+    subheader: "Primary Sponsor"
+  },
+  {
+    imageFileName: "weddingparty/eileen.jpg",
+    header: "Eileen",
+    subheader: "Primary Sponsor"
+  },
   {
     imageFileName: "weddingparty/arnel.jpg",
     header: "Arnel",
     subheader: "Primary Sponsor"
   },
-  # {
-  #   imageFileName: "weddingparty/placeholder.jpg",
-  #   header: "TBD",
-  #   subheader: "Primary Sponsor"
-  # },
+  {
+    imageFileName: "weddingparty/leo.jpg",
+    header: "Leo",
+    subheader: "Primary Sponsor"
+  },
   {
     imageFileName: "weddingparty/jennymarc.jpg",
     header: "Jenny & Marc",
     subheader: "Secondary Sponsor - Cord"
   },
-  # {
-  #   imageFileName: "weddingparty/placeholder.jpg",
-  #   header: "TBD",
-  #   subheader: "Secondary Sponsor - Veil"
-  # },
+  {
+    imageFileName: "weddingparty/cassandra.jpg",
+    header: "Cassandra",
+    subheader: "Secondary Sponsor - Veil"
+  },
+  {
+    imageFileName: "weddingparty/davit.jpg",
+    header: "Davit",
+    subheader: "Secondary Sponsor - Veil"
+  },
 ]
-  # {
-  #   imageFileName: "team/3.jpg",
-  #   header: "Diana Pertersen",
-  #   subheader: "Lead Developer",
-  #   social: {
-  #     twitter: "#",
-  #     facebook: "#",
-  #     medium: "#"
-  #   }
-  # },
 ---
